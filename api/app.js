@@ -4,8 +4,9 @@ const cors = require('cors')
 const app = express()
 const loginController = require('./controllers/login')
 
-// app.use(express.json())
 app.use(cors())
+app.use(express.static('dist/browser'))
+app.use(express.json())
 
 app.get('/api/ping', (req, res) => {
     res.json({ message: 'Pong!'})

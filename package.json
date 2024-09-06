@@ -2,12 +2,13 @@
   "name": "express-auth",
   "version": "1.0.0",
   "description": "aaajujija",
-  "main": "api/index.js",
   "scripts": {
+    "start": "npm run build:ui && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:server": "nodemon api/index.js",
+    "dev:server": "nodemon index.js",
     "dev:client": "cd frontend && ng serve",
-    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\""
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "build:ui": "cd frontend && ng build"
   },
   "keywords": [],
   "author": "Angry Berd",
