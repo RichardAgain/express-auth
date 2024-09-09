@@ -9,6 +9,7 @@ import mongoose from "mongoose"
 import { DATABASE, MONGODB_URI } from "./utils/config.js"
 
 import errorHandler from "./middleware/errorHandler.js"
+import { getRequestToken } from "./middleware/authMiddleware.js"
 
 console.log('connecting...')
 mongoose.connect(MONGODB_URI, { dbName: DATABASE })
@@ -20,6 +21,8 @@ app.use(cors())
 app.use(express.json())
 app.use(express.static("dist/browser"))
 
+app.use(getRequestToken)
+
 app.get("/api/ping", (req, res) => {
   res.json({ message: "Pong!" })
 })
@@ -28,6 +31,7 @@ app.get("/api/ping", (req, res) => {
 app.use("/api/login", loginController)
 app.use("/api/register", registerController)
 
+// ERROR HANDLER
 app.use(errorHandler)
 
 // UNKNOWN ENDPOINT

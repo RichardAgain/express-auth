@@ -7,6 +7,46 @@ const userSchema = new Schema({
     required: true,
   },
   passwordHash: String,
+  email: String,
+  phone: String,
+  cell: String,
+
+  registered: {
+    date: Date,
+    age: Number,
+  },
+
+  name: {
+    first: String,
+    last: String,
+  },
+
+  dob: {
+    date: Date,
+    age: Number,
+  },
+
+  location: {
+    street: {
+      number: Number,
+      name: String,
+    },
+
+    city: String,
+    state: String,
+    country: String,
+    postcode: Number,
+
+    coordinates: {
+      latitude: String,
+      longitude: String,
+    },
+
+    timezone: {
+      offset: String,
+      description: String,
+    },
+  },
 })
 
 const User = mongoose.model("User", userSchema)

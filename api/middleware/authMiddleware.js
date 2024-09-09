@@ -1,19 +1,18 @@
 import jwt from "jsonwebtoken"
 
-const getTokenFrom = (request) => {
-  const authorization = request.get("authorization")
+const getRequestToken = (req, res, next) => {
+  const authorization = req.get("authorization")
   if (authorization && authorization.startsWith("Bearer ")) {
-    return authorization.replace("Bearer ", "")
+    req.token = authorization.replace("Bearer ", "")
+  } else {
+    console.log("no token")
   }
 
-  return null
+  next()
 }
 
-const authUser = (req, res, next) => {
-  const decodedToken = jwt.verify(getTokenFrom(req), process.env.SECRET_KEY)
-
-  req.user = decodedToken
-
+const getRequestUser = (req, res, next) => {
+  req.user = jwt.verify(req.token, process.env.SECRET_KEY)
   next()
 }
 
@@ -25,4 +24,4 @@ const checkAdmin = (req, res, next) => {
   next()
 }
 
-export { authUser, checkAdmin }
+export { getRequestToken, getRequestUser, checkAdmin }
