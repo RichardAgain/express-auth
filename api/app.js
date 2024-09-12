@@ -4,12 +4,13 @@ import cors from "cors"
 const app = express()
 import loginController from "./controllers/login.js"
 import registerController from "./controllers/register.js"
+import userController from "./controllers/users.js"
 
 import mongoose from "mongoose"
 import { DATABASE, MONGODB_URI } from "./utils/config.js"
 
 import errorHandler from "./middleware/errorHandler.js"
-import { getRequestToken } from "./middleware/authMiddleware.js"
+import { getRequestToken, getRequestUser } from "./middleware/authMiddleware.js"
 
 console.log('connecting...')
 mongoose.connect(MONGODB_URI, { dbName: DATABASE })
@@ -30,6 +31,8 @@ app.get("/api/ping", (req, res) => {
 
 app.use("/api/login", loginController)
 app.use("/api/register", registerController)
+
+app.use("/api/user", getRequestUser, userController)
 
 // ERROR HANDLER
 app.use(errorHandler)

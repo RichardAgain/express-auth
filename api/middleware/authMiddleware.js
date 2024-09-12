@@ -20,7 +20,6 @@ const checkAdmin = (req, res, next) => {
   const user = req.user
 
   console.log(user, " Admin?")
-
   next()
 }
 
