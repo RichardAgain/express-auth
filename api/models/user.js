@@ -3,11 +3,21 @@ import mongoose, { Schema } from "mongoose"
 const userSchema = new Schema({
   username: {
     type: String,
-    unique: true,
+    // unique: true,
     required: true,
   },
   passwordHash: String,
-  email: String,
+
+  registered: {
+    date: Date,
+    age: Number,
+  },
+
+  email: {
+    type: String,
+    required: true
+  },
+
   phone: String,
   cell: String,
 
@@ -21,10 +31,14 @@ const userSchema = new Schema({
     last: String,
   },
 
+  gender: String,
+
   dob: {
     date: Date,
     age: Number,
   },
+
+  nat: String,
 
   location: {
     street: {
