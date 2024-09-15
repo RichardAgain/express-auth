@@ -17,10 +17,6 @@ export const bearerInterceptor: HttpInterceptorFn = (
 
   const decoded = session.getSession()
 
-  console.log(decoded)
-
-  // console.log(decoded?.access_token)
-
   request = request.clone({
     setHeaders: {
       Authorization: `Bearer ${decoded?.access_token}`

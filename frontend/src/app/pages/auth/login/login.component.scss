@@ -1,0 +1,21 @@
+
+.loginForm {
+    // color: variables.$primary-color;
+    // background-color: variables.$primary-color;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+
+    width: 32rem;
+    margin: auto;
+    margin-top: auto;
+
+    padding: 3rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border: 2px solid #f1f1f1;
+
+    button {
+        border-radius: 1rem;
+    }
+
+}

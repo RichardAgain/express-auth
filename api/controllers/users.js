@@ -9,6 +9,11 @@ router.get("/", (req, res) => {
   res.json({ user: req.user })
 })
 
-router.put("/", (req, res) => {})
+router.put("/", async (req, res) => {
+  const user = await User.findByIdAndUpdate(req.user.id, req.body,
+    { new: true, runValidators: true })
+
+  res.json({ user })
+})
 
 export default router

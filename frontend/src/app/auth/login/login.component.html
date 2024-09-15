@@ -1,8 +1,0 @@
-<p>login works!</p>
-
-<form [formGroup]="userForm" (ngSubmit)="submit()">
-  <label for="username">First Name: </label>
-  <input id="username" type="text" formControlName="username" />
-
-  <button type="submit" [disabled]="!userForm.valid">Log in</button>
-</form>

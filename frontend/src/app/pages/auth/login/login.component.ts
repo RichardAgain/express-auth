@@ -8,19 +8,20 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styles: ``
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   authService = inject(AuthService)
   router = inject(Router)
 
   userForm = new FormGroup({
-    username: new FormControl('')
+    username: new FormControl(''),
+    password: new FormControl('')
   })
 
   submit() {
-    const { username } = this.userForm.value
+    const { username, password } = this.userForm.value
 
-    this.authService.logIn(username)
+    this.authService.logIn(username, password)
   }
 }
