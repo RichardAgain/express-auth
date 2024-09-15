@@ -2,11 +2,12 @@ import { Component, inject, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { SessionsService } from '../../services/session.service';
 import { UserService } from './user.service';
+import { LayoutComponent } from '../../components/layout/layout.component';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, LayoutComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import axios from 'axios'
 
 @Component({
   selector: 'app-root',
@@ -11,11 +10,4 @@ import axios from 'axios'
 })
 export class AppComponent {
   title = 'frontend';
-
-  ping = () => {
-    axios.get('/api/ping')
-    .then((res) => {
-      console.log(res.data)
-    })
-  }
 }

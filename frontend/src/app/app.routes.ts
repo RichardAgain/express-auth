@@ -4,8 +4,15 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { UserComponent } from './pages/user/user.component';
 import { authGuard, guestGuard } from './guards/auth.guard';
+import { IndexComponent } from './pages/index/index.component';
 
 export const routes: Routes = [
+  { 
+    path: '', 
+    title: 'yeah idk',
+    component: IndexComponent,
+  },
+
   {
     path: 'login',
     title: 'Login',
@@ -25,5 +32,10 @@ export const routes: Routes = [
     component: UserComponent
   },
 
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {
+    path: '**',
+    redirectTo: ''
+  }
+
+
 ];
