@@ -1,0 +1,23 @@
+@use '../../../styles.scss' as *;
+
+.formInput {
+
+    input {
+        width: 100%;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        border: 1px solid $primary-color;
+        border-radius: 0.5rem;
+        display: inline-block;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}

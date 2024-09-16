@@ -1,7 +1,9 @@
 <app-layout>
-  <form [formGroup]="profileForm">
-    <label for="username">username: {{ user }} </label>
-    <input id="username" type="text" formControlName="username" />
+  <form class="form" [formGroup]="profileForm">
+    <div class="formInput">
+      <label for="username">username: {{ user }} </label>
+      <input id="username" type="text" formControlName="username" />
+    </div>
 
     <div formGroupName="name">
       <label for="first">First Name: </label>
@@ -21,4 +23,7 @@
 
     <button type="submit" [disabled]="!profileForm.valid">Submit</button>
   </form>
+
+  <app-leafet-map />
+
 </app-layout>

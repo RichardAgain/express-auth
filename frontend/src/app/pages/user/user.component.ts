@@ -3,13 +3,14 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angul
 import { SessionsService } from '../../services/session.service';
 import { UserService } from './user.service';
 import { LayoutComponent } from '../../components/layout/layout.component';
+import { LeafetMapComponent } from '../../components/leafet-map/leafet-map.component';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [ReactiveFormsModule, LayoutComponent],
+  imports: [ReactiveFormsModule, LayoutComponent, LeafetMapComponent],
   templateUrl: './user.component.html',
-  styleUrl: './user.component.css'
+  styleUrl: './user.component.scss'
 })
 export class UserComponent {
   userService = inject(UserService)

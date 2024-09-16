@@ -5,6 +5,7 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { UserComponent } from './pages/user/user.component';
 import { authGuard, guestGuard } from './guards/auth.guard';
 import { IndexComponent } from './pages/index/index.component';
+import { LeafetMapComponent } from './components/leafet-map/leafet-map.component';
 
 export const routes: Routes = [
   { 
@@ -30,6 +31,11 @@ export const routes: Routes = [
     title: 'User',
     canActivate: [authGuard],
     component: UserComponent
+  },
+  {
+    path: 'map',
+    title: 'Map',
+    component: LeafetMapComponent
   },
 
   {
