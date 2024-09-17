@@ -18,15 +18,6 @@ router.post("/", async (req, res) => {
 
   const forToken = {
     id: user._id,
-    username: user.username,
-    email: user.email,
-    name: user.name,
-    gender: user.gender,
-    dob: user.dob,
-    phone: user.phone,
-    cell: user.cell,
-    nat: user.nat,
-    location: user.location,
   }
 
   const access_token = jwt.sign(forToken, process.env.SECRET_KEY, {

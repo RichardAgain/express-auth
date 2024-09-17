@@ -8,9 +8,10 @@ export class UserService {
   http = inject(HttpClient)
 
   getUser () {
-    this.http.get('/api/user').subscribe(res => {
-      console.log('USER!!!!')
-      console.log(res)
-    })
+    return this.http.get('/api/user')
+  }
+
+  updateUser (formData: any) {
+    return this.http.put('/api/user', formData)
   }
 }

@@ -1,6 +1,6 @@
 <app-layout>
   <div class="container">
-    <form class="form" [formGroup]="profileForm">
+    <form class="form" [formGroup]="profileForm" (submit)="submitForm()">
       <div class="container-group">
         <h3>Account</h3>
 
@@ -15,11 +15,7 @@
             />
           </div>
 
-          <p>
-            @for (action of actionList; track $index) {
-            {{ action.type }}
-            } = {{ totalTime }}
-          </p>
+
 
           <div class="formInput">
             <label for="email">Email: </label>
@@ -58,15 +54,26 @@
               />
             </div>
 
-            <div class="formInput">
-              <label for="phone">Phone: </label>
-              <input
-                id="phone"
-                type="tel"
-                formControlName="phone"
-                appInputEvents
-              />
-            </div>
+          </div>
+
+          <div class="formInput">
+            <label for="phone">Phone </label>
+            <input
+              id="phone"
+              type="tel"
+              formControlName="phone"
+              appInputEvents
+            />
+          </div>
+
+          <div class="formInput">
+            <label for="dob">Date of birth </label>
+            <input
+              id="dob"
+              type="type"
+              formControlName="dob"
+              appInputEvents
+            />
           </div>
         </div>
       </div>
@@ -88,6 +95,16 @@
                   appInputEvents
                 />
               </div>
+            </div>
+
+            <div class="formInput">
+              <label for="postcode">Postcode</label>
+              <input
+                id="postcode"
+                type="text"
+                formControlName="postcode"
+                appInputEvents
+              />
             </div>
 
             <div class="formInput">
@@ -119,16 +136,6 @@
                 appInputEvents
               />
             </div>
-
-            <div class="formInput">
-              <label for="postcode">Postcode</label>
-              <input
-                id="postcode"
-                type="text"
-                formControlName="postcode"
-                appInputEvents
-              />
-            </div>
           </div>
         </div>
       </div>
@@ -137,7 +144,21 @@
         Submit
       </button>
 
-      <p></p>
+      <p class="KLMResults">
+        GOMS KLM: <br>
+
+        @if (actionList.length === 0) {
+          Start Typing!
+        } 
+        @else { 
+          @for (action of actionList; track $index) {
+            @if (action.times > 1) {
+              {{ action.times }}
+            } {{ action.type }}
+          }
+          = {{ totalTime }} seconds
+        }
+      </p>
     </form>
   </div>
 </app-layout>

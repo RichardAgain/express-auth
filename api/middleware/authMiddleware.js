@@ -12,12 +12,13 @@ const getRequestToken = (req, res, next) => {
 }
 
 const getRequestUser = (req, res, next) => {
-  req.user = jwt.verify(req.token, process.env.SECRET_KEY)
+  const decoded = jwt.verify(req.token, process.env.SECRET_KEY)
+  req.user_id = decoded.id
   next()
 }
 
 const checkAdmin = (req, res, next) => {
-  const user = req.user
+  const user = req.user_id
 
   console.log(user, " Admin?")
   next()

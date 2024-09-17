@@ -1,4 +1,10 @@
-import { Component, Directive, HostListener, inject, Inject } from '@angular/core';
+import {
+  Component,
+  Directive,
+  HostListener,
+  inject,
+  Inject,
+} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -15,7 +21,7 @@ import { InputEventsModule } from './input-events/inputs-events.module';
 
 interface KLMEvent {
   type: string;
-  times?: string;
+  times: number;
 }
 
 @Component({
@@ -35,23 +41,57 @@ export class UserComponent {
   user: any = null;
   userService = inject(UserService);
   locationService = inject(GeoInfoService);
+  formBuilder = inject(FormBuilder);
 
   actionList: KLMEvent[] = [];
-  lastAction: KLMEvent = { type: 'B' };
+  lastAction: KLMEvent = { type: 'B', times: 1 };
   totalTime: number = 0;
 
   ngOnInit() {
-    this.user = this.userService.getUser();
+    this.getUser();
+  }
+
+  getUser() {
+    this.userService.getUser().subscribe((res: any) => {
+      const user = res.user;
+      console.log(user);
+
+      this.profileForm.patchValue({
+        ...user,
+        dob: user.dob?.date,
+      });
+    });
+  }
+
+  submitForm() {
+    const formObject = {
+      ...this.profileForm.value,
+      dob: {
+        date: this.profileForm.value.dob,
+        age: 0,
+      },
+    };
+
+    this.userService.updateUser(this.profileForm.value).subscribe((res) => {
+      console.log(res, 'LESGOO!!!');
+    });
   }
 
   getEvents(event: KLMEvent) {
-    this.actionList.push(event);
-
     if (
       (event.type === 'B' && this.lastAction.type === 'K') ||
       (event.type === 'K' && this.lastAction.type === 'B')
     ) {
-      this.actionList.push({ type: 'H' });
+      this.actionList.push({ type: 'H', times: 1 });
+    }
+
+    if (
+      this.actionList.length > 0 &&
+      event.type === this.actionList[this.actionList.length - 1].type
+    ) {
+      this.actionList[this.actionList.length - 1].times += 1;
+    } else {
+      this.actionList.push(event);
     }
 
     if (event.type === 'K' || event.type === 'B') {
@@ -75,6 +115,8 @@ export class UserComponent {
     const { lat, lng } = event;
 
     this.locationService.getLocationInfo(lat, lng).subscribe((data: any) => {
+      const addressData = data.address;
+
       this.profileForm.patchValue({
         nat: data.address.country,
 
@@ -97,10 +139,10 @@ export class UserComponent {
     });
   }
 
-  profileForm = new FormGroup({
-    username: new FormControl(this.user?.username),
+  profileForm = this.formBuilder.group({
+    username: ['hey'],
 
-    name: new FormGroup({
+    name: this.formBuilder.group({
       first: new FormControl('Ejemplo'),
       last: new FormControl(''),
     }),
@@ -109,10 +151,7 @@ export class UserComponent {
     email: new FormControl(''),
     cell: new FormControl(''),
 
-    dob: new FormGroup({
-      date: new FormControl(''),
-      age: new FormControl(''),
-    }),
+    dob: new FormControl(''),
 
     nat: new FormControl(''),
 

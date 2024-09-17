@@ -3,17 +3,17 @@ import User from "../models/user.js"
 
 const router = Router()
 
-router.get("/", (req, res) => {
-  // const user = await User.findById(req.user.id)
+router.get("/", async (req, res) => {
+  const user = await User.findById(req.user_id)
 
-  res.json({ user: req.user })
+  return res.json({ user })
 })
 
 router.put("/", async (req, res) => {
-  const user = await User.findByIdAndUpdate(req.user.id, req.body,
+  const user = await User.findByIdAndUpdate(req.user_id, { ...req.body },
     { new: true, runValidators: true })
 
-  res.json({ user })
+  res.json({ modifiedUser: user })
 })
 
 export default router
