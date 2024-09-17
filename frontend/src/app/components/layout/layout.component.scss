@@ -28,3 +28,7 @@
 .register {
     @include button-outline ()
 }
+
+.content {
+    padding: 3rem;
+}

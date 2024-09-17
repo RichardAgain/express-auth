@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import * as L from 'leaflet';
 
 @Component({
@@ -12,8 +12,7 @@ export class LeafetMapComponent implements OnInit {
   map: any;
   markers: L.Marker[] = [];
 
-  lat: number = 10.236396928729727;
-  lng: number = -67.96242397055313;
+  @Output() getCoordinatesEvent = new EventEmitter<{ lat: number, lng: number}>();
 
   ngOnInit() {
     this.initMap();
@@ -21,7 +20,7 @@ export class LeafetMapComponent implements OnInit {
   }
 
   initMap() {
-    this.map = L.map('map').setView([this.lat, this.lng], 18);
+    this.map = L.map('map').setView([10.236396928729727, -67.96242397055313], 18);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
@@ -44,12 +43,7 @@ export class LeafetMapComponent implements OnInit {
 
       this.markers.push(newMarker);
 
-      console.log(`Coordinates: ${lat}, ${lng}`);
-      
+      this.getCoordinatesEvent.emit({lat, lng});
     });
-  }
-
-  getCoordinates() {
-    return this.markers.map((marker) => marker.getLatLng());
   }
 }

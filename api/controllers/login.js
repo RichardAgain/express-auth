@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
   }
 
   const access_token = jwt.sign(forToken, process.env.SECRET_KEY, {
-    expiresIn: 60*5,
+    expiresIn: 60*60,
   })
 
   res.json({ message: 'User logged in', access_token })
