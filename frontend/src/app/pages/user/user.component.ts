@@ -1,10 +1,4 @@
-import {
-  Component,
-  Directive,
-  HostListener,
-  inject,
-  Inject,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -12,7 +6,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { SessionsService } from '../../services/session.service';
-import { UserService } from './user.service';
+import { UserService } from '../../services/user.service';
 import { LayoutComponent } from '../../components/layout/layout.component';
 import { LeafetMapComponent } from '../../components/leafet-map/leafet-map.component';
 import { GeoInfoService } from './geo-info.service';
@@ -46,6 +40,7 @@ export class UserComponent {
   actionList: KLMEvent[] = [];
   lastAction: KLMEvent = { type: 'B', times: 1 };
   totalTime: number = 0;
+  cdr = inject(ChangeDetectorRef);
 
   ngOnInit() {
     this.getUser();
@@ -53,14 +48,18 @@ export class UserComponent {
 
   getUser() {
     this.userService.getUser().subscribe((res: any) => {
-      const user = res.user;
-      console.log(user);
+      const user = res.user
 
+      const parsedDate = new Date(user.dob.date);
+      const formattedDate = `${('0' + (parsedDate.getMonth() + 1)).slice(-2)}-${('0' + parsedDate.getDate()).slice(-2)}-${parsedDate.getFullYear()}`;
+      
       this.profileForm.patchValue({
         ...user,
-        dob: user.dob?.date,
+        dob: formattedDate,
       });
-    });
+
+
+    })
   }
 
   submitForm() {
@@ -131,8 +130,8 @@ export class UserComponent {
           postcode: data.address.postcode,
 
           coordinates: {
-            latitude: data.lat,
-            longitude: data.lon,
+            latitude: lat.toString(),
+            longitude: lng.toString(),
           },
         },
       });
@@ -140,10 +139,10 @@ export class UserComponent {
   }
 
   profileForm = this.formBuilder.group({
-    username: ['hey'],
+    username: [''],
 
     name: this.formBuilder.group({
-      first: new FormControl('Ejemplo'),
+      first: [''],
       last: new FormControl(''),
     }),
 
@@ -151,9 +150,9 @@ export class UserComponent {
     email: new FormControl(''),
     cell: new FormControl(''),
 
-    dob: new FormControl(''),
+    dob: [''],
 
-    nat: new FormControl(''),
+    nat: [''],
 
     location: new FormGroup({
       street: new FormGroup({

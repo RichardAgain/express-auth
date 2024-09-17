@@ -15,10 +15,8 @@
             />
           </div>
 
-
-
           <div class="formInput">
-            <label for="email">Email: </label>
+            <label for="email">Email </label>
             <input
               id="email"
               type="email"
@@ -53,7 +51,6 @@
                 appInputEvents
               />
             </div>
-
           </div>
 
           <div class="formInput">
@@ -68,12 +65,7 @@
 
           <div class="formInput">
             <label for="dob">Date of birth </label>
-            <input
-              id="dob"
-              type="type"
-              formControlName="dob"
-              appInputEvents
-            />
+            <input id="dob" type="type" formControlName="dob" appInputEvents />
           </div>
         </div>
       </div>
@@ -82,7 +74,13 @@
         <h3>Location</h3>
 
         <div class="input-group">
-          <app-leafet-map (getCoordinatesEvent)="getGeoInfo($event)" />
+          <!-- <button type="button" (click)="syncMap()"> -->
+            <!-- Sync map
+          </button> -->
+
+          <app-leafet-map
+            (getCoordinatesEvent)="getGeoInfo($event)"
+          />
 
           <div formGroupName="location">
             <div formGroupName="street">
@@ -140,24 +138,19 @@
         </div>
       </div>
 
-      <button class="submit" type="submit" [disabled]="!profileForm.valid">
-        Submit
-      </button>
+      <div class="submit">
+        <button type="submit" [disabled]="!profileForm.valid">
+          Submit
+        </button>
+      </div>
 
       <p class="KLMResults">
-        GOMS KLM: <br>
+        GOMS KLM: <br />
 
-        @if (actionList.length === 0) {
-          Start Typing!
-        } 
-        @else { 
-          @for (action of actionList; track $index) {
-            @if (action.times > 1) {
-              {{ action.times }}
-            } {{ action.type }}
-          }
-          = {{ totalTime }} seconds
-        }
+        @if (actionList.length === 0) { Start Typing! } @else { @for (action of
+        actionList; track $index) { @if (action.times > 1) {
+        {{ action.times }}
+        } {{ action.type }} } = {{ totalTime }} seconds }
       </p>
     </form>
   </div>

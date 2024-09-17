@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import * as L from 'leaflet';
 
 @Component({
@@ -12,15 +12,21 @@ export class LeafetMapComponent implements OnInit {
   map: any;
   markers: L.Marker[] = [];
 
+  @Input() coordinates: { lat: number, lng: number } = { lat: 10.236396928729727, lng: -67.96242397055313 };
+
   @Output() getCoordinatesEvent = new EventEmitter<{ lat: number, lng: number}>();
 
   ngOnInit() {
     this.initMap();
-    this.addClickEvent();
   }
 
+  icon = L.icon({
+    iconUrl: './unnamed.png',
+    iconSize: [25, 41],
+  });
+
   initMap() {
-    this.map = L.map('map').setView([10.236396928729727, -67.96242397055313], 18);
+    this.map = L.map('map').setView([this.coordinates.lat, this.coordinates.lng], 18);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
@@ -36,7 +42,9 @@ export class LeafetMapComponent implements OnInit {
       this.markers.forEach((marker) => this.map.removeLayer(marker));
       this.markers = [];
 
-      const newMarker = L.marker([lat, lng])
+      const newMarker = L.marker([lat, lng], {
+        icon: this.icon
+      })
         .addTo(this.map)
         .bindPopup(`${lat}, ${lng}`)
         .openPopup();

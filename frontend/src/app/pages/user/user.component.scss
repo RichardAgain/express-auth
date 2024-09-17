@@ -51,6 +51,13 @@ h3 {
 }
 
 .submit {
-    @include button-primary();
-    width: 16rem;
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 2rem;
+
+    button {
+
+        @include button-primary();
+        width: 16rem;
+    }
 }

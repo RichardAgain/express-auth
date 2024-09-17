@@ -10,7 +10,17 @@ router.get("/", async (req, res) => {
 })
 
 router.put("/", async (req, res) => {
-  const user = await User.findByIdAndUpdate(req.user_id, { ...req.body },
+  const data = {
+    ...req.body,
+    dob: {
+      date: req.body.dob,
+      age: 0,
+    },
+  }
+
+  console.log(data)
+
+  const user = await User.findByIdAndUpdate(req.user_id, data,
     { new: true, runValidators: true })
 
   res.json({ modifiedUser: user })

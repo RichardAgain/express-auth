@@ -11,6 +11,18 @@ export class AuthService {
   storage = inject(StorageService)
   router = inject(Router)
 
+  register(username: any, password: any, passwordConfirm: any, email: any) {
+    return this.http.post('api/register', {
+      username,
+      password,
+      passwordConfirm,
+      email
+    }).subscribe( res => {
+      this.storage.saveValue('session', JSON.stringify(res))
+      this.router.navigateByUrl('user')
+    })
+  }
+
   logIn(username: any, password: any) {
     return this.http.post('api/login', {
       username,
