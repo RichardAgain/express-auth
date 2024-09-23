@@ -2,28 +2,20 @@
   "name": "express-auth",
   "version": "1.0.0",
   "description": "aaajujija",
-  "type": "module",
+  "main": "api/index.js",
   "scripts": {
-    "start": "npm run build:ui && node --env-file=.env index.js",
+    "install": "cd frontend && pnpm install && cd ../backend && pnpm install",
+    "start": "pnpm build:ui && cd backend && pnpm start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:server": "nodemon --env-file=.env index.js",
-    "dev:client": "cd frontend && ng serve",
-    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "api": "cd backend &&  pnpm dev",
+    "client": "cd frontend && ng serve",
+    "dev": "concurrently \"pnpm api\" \"pnpm client\"",
     "build:ui": "cd frontend && ng build"
   },
   "keywords": [],
-  "author": "Angry Berd",
+  "author": "",
   "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.1.1",
-    "cors": "^2.8.5",
-    "express": "^4.19.2",
-    "express-async-errors": "^3.1.1",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.6.1"
-  },
   "devDependencies": {
-    "concurrently": "^8.2.2",
-    "nodemon": "^3.1.4"
+    "concurrently": "^9.0.1"
   }
 }

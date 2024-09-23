@@ -148,6 +148,7 @@ export class UserComponent {
 
     phone: new FormControl(''),
     email: new FormControl(''),
+    
     cell: new FormControl(''),
 
     dob: [''],
