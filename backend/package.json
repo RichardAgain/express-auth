@@ -4,6 +4,7 @@
   "description": "aaajujija",
   "type": "module",
   "scripts": {
+    "install": "copy .env.example .env",
     "start": "node --env-file=.env index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --env-file=.env index.js"
@@ -20,7 +21,6 @@
     "mongoose": "^8.6.1"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
     "nodemon": "^3.1.4"
   }
 }
