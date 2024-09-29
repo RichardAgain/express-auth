@@ -5,22 +5,18 @@ import { effect, Injectable, signal } from '@angular/core';
 })
 export class ThemeService {
   primary = signal<string>('red');
+  secondary = signal<string>('red');
+  accent = signal<string>('red');
+
+  text = signal<string>('black');
+  background = signal<string>('white');
 
   textSize = signal<string>('16px');
 
-  constructor() { 
+  constructor() {
     effect(() => {
       console.log(`The COLOR is: ${this.primary()}`);
     });
-  }
-
-  changeTheme() {
-    if (this.primary() === 'red') {
-      this.primary.set('blue');
-      return;
-    }
-
-    this.primary.set('red');
   }
 
   resize(size: number) {
