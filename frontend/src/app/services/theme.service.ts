@@ -1,9 +1,12 @@
-import { effect, Injectable, signal } from '@angular/core';
+import { computed, effect, inject, Injectable, signal } from '@angular/core';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
+  storage = inject(StorageService)
+
   primary = signal<string>('red');
   secondary = signal<string>('red');
   accent = signal<string>('red');
@@ -13,13 +16,20 @@ export class ThemeService {
 
   textSize = signal<string>('16px');
 
+  options = computed(() => ({
+    primary: this.primary(),
+    secondary: this.secondary(),
+    accent: this.accent(),
+    text: this.text(),
+    background: this.background(),
+    textSize: this.textSize(),
+  }))
+
   constructor() {
-    effect(() => {
-      console.log(`The COLOR is: ${this.primary()}`);
-    });
+    
   }
 
-  resize(size: number) {
-    this.textSize.set(`${size}px`);
+  saveTheme() {
+    this.storage.saveValue('theme', JSON.stringify(this.options()))
   }
 }

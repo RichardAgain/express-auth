@@ -6,6 +6,7 @@ import { UserComponent } from './pages/user/user.component';
 import { authGuard, guestGuard } from './guards/auth.guard';
 import { IndexComponent } from './pages/index/index.component';
 import { LeafetMapComponent } from './components/leafet-map/leafet-map.component';
+import { UserThemeComponent } from './pages/user-theme/user-theme.component';
 
 export const routes: Routes = [
   { 
@@ -33,11 +34,11 @@ export const routes: Routes = [
     component: UserComponent
   },
   {
-    path: 'map',
-    title: 'Map',
-    component: LeafetMapComponent
+    path: 'user/theme',
+    title: 'Theme',
+    canActivate: [authGuard],
+    component: UserThemeComponent
   },
-
   {
     path: '**',
     redirectTo: ''
