@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { SessionsService } from '../../services/session.service';
 import { UserService } from '../../services/user.service';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-layout',
@@ -13,6 +14,7 @@ import { UserService } from '../../services/user.service';
 export class LayoutComponent {
   user: any = null
   userService = inject(UserService)
+  theme = inject(ThemeService)
 
   ngOnInit() {
     this.userService.getUser().subscribe((res: any) => {

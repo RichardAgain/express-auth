@@ -1,3 +1,21 @@
 <app-layout>
+  <p [style.color]="theme.primary()">
     ¯\_(ツ)_/¯
+    <!-- {{ primary() }} -->
+  </p>
+
+  <button (click)="changeTheme()">YEAH</button>
+
+  <p>
+    {{ computed() }}
+  </p>
+
+  <button (click)="resize(32)" >BIG</button>
+  <button (click)="resize(16)" >small</button>
+
+  <p [style.font-size]="theme.textSize()">
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi dicta quo
+    incidunt a aspernatur necessitatibus iste recusandae assumenda ullam dolore,
+    eveniet id quidem eius asperiores tempore molestias. Similique, nostrum nam.
+  </p>
 </app-layout>

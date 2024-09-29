@@ -1,21 +1,20 @@
-
-<div class="header">
-    <a routerLink="/">
-        <h2 class="title">Angular Auth</h2>
-    </a>
-    @if (!user) {
-        <div>
-            <a class="register" routerLink="/register"> Sign Up </a>
-            <a class="login" routerLink="/login" > Log in</a>
-        </div>
-    } @else {
-        <div>
-            <a routerLink="user" class="logout"> {{ user.username }}  </a>
-            <a class="logout" (click)="logout()"> Log out </a>
-        </div>
-    }
+<div class="header" [style.background-color]="theme.primary()">
+  <a routerLink="/">
+    <h2 class="title">Angular Auth</h2>
+  </a>
+  @if (!user) {
+  <div>
+    <a class="register" routerLink="/register"> Sign Up </a>
+    <a class="login" routerLink="/login"> Log in</a>
+  </div>
+  } @else {
+  <div>
+    <a routerLink="user" class="logout"> {{ user.username }} </a>
+    <a class="logout" (click)="logout()"> Log out </a>
+  </div>
+  }
 </div>
 
 <div class="content">
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 </div>
