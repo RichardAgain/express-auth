@@ -1,5 +1,6 @@
 import { Router } from "express"
 import User from "../models/user.js"
+import Theme from "../models/theme.js"
 
 const router = Router()
 
@@ -18,12 +19,22 @@ router.put("/", async (req, res) => {
     },
   }
 
-  console.log(data)
-
   const user = await User.findByIdAndUpdate(req.user_id, data,
     { new: true, runValidators: true })
 
   res.json({ modifiedUser: user })
+})
+
+router.get("/theme", async (req, res) => {
+  const theme = await Theme.find({ user: req.user_id })
+
+  return res.json({ theme })
+})
+
+router.put("/theme", async (req, res) => {
+  const theme = await Theme.findOneAndUpdate({ user: req.user_id }, req.body, { new: true })
+
+  return res.json(theme)
 })
 
 export default router

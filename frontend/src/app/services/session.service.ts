@@ -4,6 +4,7 @@ import { StorageService } from './storage.service';
 interface Session {
   access_token: string
   username: string
+  theme: any
 }
 
 @Injectable({
@@ -12,7 +13,7 @@ interface Session {
 export class SessionsService {
   storage = inject(StorageService)
 
-  getSession () {
+  getSession (): Session | null {
     const current: Session | null
       = this.storage.getValue('session') 
 

@@ -19,7 +19,7 @@ export class AuthService {
       email
     }).subscribe( res => {
       this.storage.saveValue('session', JSON.stringify(res))
-      this.router.navigateByUrl('user')
+      this.router.navigateByUrl('user/theme')
     })
   }
 
@@ -29,7 +29,7 @@ export class AuthService {
       password
     }).subscribe( res => {
       this.storage.saveValue('session', JSON.stringify(res))
-      this.router.navigateByUrl('user')
+      this.router.navigateByUrl('user/theme')
     })
   }
 }

@@ -15,7 +15,7 @@ const userSchema = new Schema({
 
   email: {
     type: String,
-    required: true
+    required: true,
   },
 
   phone: String,
@@ -56,15 +56,20 @@ const userSchema = new Schema({
       longitude: String,
     },
   },
+
+  theme: {
+    type: Schema.Types.ObjectId,
+    ref: "Theme",
+  },
 })
 
-userSchema.set('toJSON', {
+userSchema.set("toJSON", {
   transform: (document, returnedObject) => {
     delete returnedObject.passwordHash
     delete returnedObject.registered
     delete returnedObject._id
     delete returnedObject.__v
-  }
+  },
 })
 
 const User = mongoose.model("User", userSchema)

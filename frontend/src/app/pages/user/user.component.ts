@@ -6,12 +6,12 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { SessionsService } from '../../services/session.service';
-import { UserService } from '../../services/user.service';
 import { LayoutComponent } from '../../components/layout/layout.component';
 import { LeafetMapComponent } from '../../components/leafet-map/leafet-map.component';
 import { GeoInfoService } from './geo-info.service';
 import { CommonModule } from '@angular/common';
 import { InputEventsModule } from './input-events/inputs-events.module';
+import { UserService } from './user.service';
 
 interface KLMEvent {
   type: string;

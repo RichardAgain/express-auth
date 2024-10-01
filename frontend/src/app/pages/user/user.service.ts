@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { SessionsService } from './session.service';
 import { Router } from '@angular/router';
+import { SessionsService } from '../../services/session.service';
 
 @Injectable({
   providedIn: 'root'

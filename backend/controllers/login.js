@@ -1,7 +1,8 @@
 import jwt from "jsonwebtoken"
+import bcrypt from "bcrypt"
 import { Router } from "express"
 import User from "../models/user.js"
-import bcrypt from "bcrypt"
+import Theme from "../models/theme.js"
 
 const router = Router()
 
@@ -16,6 +17,8 @@ router.post("/", async (req, res) => {
 
   if (!match) return res.status(401).json({ message: "Password not valid" })
 
+  const theme = await Theme.findOne({ user: user.id })
+
   const forToken = {
     id: user._id,
   }
@@ -24,7 +27,7 @@ router.post("/", async (req, res) => {
     expiresIn: 60*60,
   })
 
-  res.json({ message: 'User logged in', access_token })
+  res.json({ message: 'User logged in', access_token, theme, username })
 })
 
 export default router

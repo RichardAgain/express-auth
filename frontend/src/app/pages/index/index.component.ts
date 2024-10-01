@@ -17,4 +17,8 @@ interface Theme {
 })
 export class IndexComponent {
   theme = inject(ThemeService)
+
+  constructor () {
+    this.theme.changeTheme()
+  }
 }

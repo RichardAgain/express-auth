@@ -14,6 +14,7 @@ const getRequestToken = (req, res, next) => {
 const getRequestUser = (req, res, next) => {
   const decoded = jwt.verify(req.token, process.env.SECRET_KEY)
   req.user_id = decoded.id
+  console.log(decoded.theme)
   next()
 }
 

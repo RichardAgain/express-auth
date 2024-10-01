@@ -25,7 +25,7 @@ export const bearerInterceptor: HttpInterceptorFn = (
 
   return next(request)
   .pipe(catchError((error) => {
-    if (error.status === 401) {
+    if (error.status === 401 ) {
       console.log('ERROR!!!')
 
       session.signOut()

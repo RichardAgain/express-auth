@@ -2,6 +2,7 @@ import { Router } from "express"
 import User from "../models/user.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
+import Theme from "../models/theme.js"
 
 const router = Router()
 
@@ -21,13 +22,17 @@ router.post("/", async (req, res) => {
     registered: {
       date: new Date(),
       age: 0
-    }
+    },
   })
 
+  const theme = new Theme({ user: user.id })
+  
   await user.save()
+  await theme.save()
 
   const forToken = {
     id: user._id,
+    theme
   }
 
   const access_token = 
@@ -35,7 +40,7 @@ router.post("/", async (req, res) => {
       expiresIn: 60*60
     })
 
-  return res.json({ message: "User created", access_token })
+  return res.json({ message: "User created", access_token, theme, username: user.username })
 })
 
 export default router

@@ -2,8 +2,8 @@ import { Component, computed, effect, inject, signal } from '@angular/core';
 import { LayoutComponent } from '../../components/layout/layout.component';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../services/theme.service';
-import { ColorChromeModule } from 'ngx-color/chrome'; // <color-chrome></color-chrome>
-import { NgxSliderModule, Options } from '@angular-slider/ngx-slider';
+import { ColorChromeModule } from 'ngx-color/chrome';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @Component({
   selector: 'app-user-theme',
@@ -18,4 +18,8 @@ export class UserThemeComponent {
   theme = inject(ThemeService)
 
   computed = computed(() => this.theme.primary + ' computed');
+
+  constructor () {
+    this.theme.changeTheme()
+  }
 }
