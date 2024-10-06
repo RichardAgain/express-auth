@@ -29,6 +29,7 @@ export const bearerInterceptor: HttpInterceptorFn = (
       console.log('ERROR!!!')
 
       session.signOut()
+      router.navigateByUrl('/login')
     }
 
     return throwError(() => error)

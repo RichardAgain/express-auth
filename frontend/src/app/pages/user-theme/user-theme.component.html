@@ -52,16 +52,39 @@
   </div>
 
   <ngx-slider
-    [(value)]="value"
+    [(value)]="textSize"
     [options]="{ floor: 8, ceil: 32 }"
-    (userChange)="theme.textSize.set(value + 'px')"
+    (userChange)="theme.textSize.set(textSize + 'px')"
+  ></ngx-slider>
+  <ngx-slider
+    [(value)]="subSize"
+    [options]="{ floor: 16, ceil: 40 }"
+    (userChange)="theme.subSize.set(subSize + 'px')"
+  ></ngx-slider>
+  <ngx-slider
+    [(value)]="titleSize"
+    [options]="{ floor: 24, ceil: 48 }"
+    (userChange)="theme.titleSize.set(titleSize + 'px')"
   ></ngx-slider>
 
-  <button (click)="theme.saveTheme()">SAVE</button>
+  <button (click)="saveTheme()">SAVE</button>
 
-  <p [style.font-size]="theme.textSize()" [style.color]="theme.text()">
+  <p [style.font-size]="theme.titleSize()">
+    THIS IS A TITLE
+  </p>
+
+  <p [style.font-size]="theme.subSize()">
+    This is a Subtitle
+  </p>
+
+  <p [style.font-size]="theme.textSize()" [style.color]="theme.text()" style="font-family: 'Customfont';">
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi dicta quo
     incidunt a aspernatur necessitatibus iste recusandae assumenda ullam dolore,
     eveniet id quidem eius asperiores tempore molestias. Similique, nostrum nam.
   </p>
+
+  <div style="margin: 10px; border: 1px solid #ccc; padding: 5px">
+    <h3>Upload Font</h3>
+    <input type="file" accept=".woff,.ttf" (change)="onFileSelected($event)" />
+  </div>
 </app-layout>

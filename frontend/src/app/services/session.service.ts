@@ -1,5 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
+import { ThemeService } from './theme.service';
 
 interface Session {
   access_token: string

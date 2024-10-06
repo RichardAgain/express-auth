@@ -12,6 +12,7 @@ import { GeoInfoService } from './geo-info.service';
 import { CommonModule } from '@angular/common';
 import { InputEventsModule } from './input-events/inputs-events.module';
 import { UserService } from './user.service';
+import { ThemeService } from '../../services/theme.service';
 
 interface KLMEvent {
   type: string;
@@ -36,14 +37,15 @@ export class UserComponent {
   userService = inject(UserService);
   locationService = inject(GeoInfoService);
   formBuilder = inject(FormBuilder);
+  theme = inject(ThemeService)
 
   actionList: KLMEvent[] = [];
   lastAction: KLMEvent = { type: 'B', times: 1 };
   totalTime: number = 0;
   cdr = inject(ChangeDetectorRef);
 
-  ngOnInit() {
-    this.getUser();
+  constructor () {
+    this.getUser()
   }
 
   getUser() {

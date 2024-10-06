@@ -1,4 +1,4 @@
-import { computed, effect, inject, Injectable, signal } from '@angular/core';
+import { computed, effect, inject, Injectable, OnInit, signal } from '@angular/core';
 import { SessionsService } from './session.service';
 import { HttpClient } from '@angular/common/http';
 import { StorageService } from './storage.service';
@@ -11,55 +11,67 @@ export class ThemeService {
   storage = inject(StorageService);
   http = inject(HttpClient);
 
-  primary = signal<string>('red');
-  secondary = signal<string>('red');
-  accent = signal<string>('red');
+  primary = signal<string>('');
+  secondary = signal<string>('');
+  accent = signal<string>('');
+  background = signal<string>('');
+  text = signal<string>('');
 
-  text = signal<string>('black');
-  background = signal<string>('white');
+  textSize = signal<string>('');
+  subSize = signal<string>('');
+  titleSize = signal<string>('');
 
-  textSize = signal<string>('16px');
-
-  options = computed(() => ({
-    primary: this.primary(),
-    secondary: this.secondary(),
-    accent: this.accent(),
-    text: this.text(),
-    background: this.background(),
-    textSize: this.textSize(),
-  }));
-
-  constructor() {
-    effect(
-      () => {
-        console.log(this.session.getSession(), 'changed!!!');
-
-        this.changeTheme();
-      },
-      { allowSignalWrites: true }
-    );
+  constructor () {
+    this.changeTheme()
+    this.changeFont()
   }
 
   changeTheme() {
-    const sessionTheme = this.session.getSession()?.theme || '';
+    const sessionTheme = this.session.getSession()?.theme || ''
 
-    console.log('session theme: ', sessionTheme);
+    this.primary.set(sessionTheme.primary || 'black')
+    this.secondary.set(sessionTheme.primary || 'black')
+    this.accent.set(sessionTheme.primary || 'black')
+    this.text.set(sessionTheme.text || 'white')
+    this.background.set(sessionTheme.background || 'gray')
 
-    this.primary.set(sessionTheme.primary || 'red');
-    this.text.set(sessionTheme.text || 'black');
-    this.background.set(sessionTheme.background || 'white');
+    this.textSize.set(sessionTheme.textSize || '16px')
+    this.subSize.set(sessionTheme.subSize || '24px')
+    this.titleSize.set(sessionTheme.titleSize || '32px')
   }
 
-  saveTheme() {
-    this.http.put('api/user/theme', this.options()).subscribe((res) => {
-      console.log(res, 'YESSSS');
-      this.storage.saveValue(
-        'session',
-        JSON.stringify({
-          access_token: this.session.getSession()?.access_token,
-          theme: this.options(),
-        })
-      );
-    });
+  changeFont() {
+    const font = new FontFace(
+      'customFont',
+      `url(http://localhost:3000/fonts/${
+        this.session.getSession()?.theme.fontPath
+      })`
+    );
+
+    font.load()
+      .then((loadedFont) => {
+        (document.fonts as any).add(loadedFont);
+        console.log(`Font ${loadedFont.family} loaded successfully`);
+      })
+      .catch((error) => {
+        console.error('Failed to load font:', error);
+      });
+  }
+
+  saveTheme(formData: any) {
+    return this.http.patch('api/user/theme', formData);
+  }
+
+  saveThemeInStorage(theme: any) {
+    const storage = this.storage.getValue('session')
+
+    console.log(storage)
+
+    this.storage.saveValue('session', JSON.stringify({
+      ...storage,
+      theme
+    }))
+
+    this.changeTheme()
   }
 }

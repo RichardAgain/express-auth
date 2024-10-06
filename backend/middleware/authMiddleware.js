@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken"
+import User from "../models/user.js"
 
 const getRequestToken = (req, res, next) => {
   const authorization = req.get("authorization")
@@ -11,10 +12,15 @@ const getRequestToken = (req, res, next) => {
   next()
 }
 
-const getRequestUser = (req, res, next) => {
+const getRequestUser =  async (req, res, next) => {
   const decoded = jwt.verify(req.token, process.env.SECRET_KEY)
   req.user_id = decoded.id
-  console.log(decoded.theme)
+
+  const user = await User.findById(req.user_id)
+  if (!user) {
+    return res.status(401).json({ error: "Token invalid" })
+  }
+
   next()
 }
 

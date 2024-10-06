@@ -1,11 +1,17 @@
 import mongoose, { Schema } from "mongoose"
 
 const themeSchema = new Schema({
-  primary: { type: String, default: '#000000'},
-  secondary: { type: String, default: '#000000'},
-  accent: { type: String, default: '#000000'},
-  background: { type: String, default: '#000000'},
-  text: { type: String, default: '#000000'},
+  primary: String,
+  secondary: String,
+  accent: String,
+  background: String,
+  text: String,
+
+  textSize: String,
+  subSize: String,
+  titleSize: String,
+
+  fontPath: { type: String },
 
   user: {
     type: Schema.Types.ObjectId,

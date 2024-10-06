@@ -12,6 +12,7 @@ router.get("/api/ping", (req, res) => {
 })
 
 router.use("/api/login", loginController)
+
 router.use("/api/register", registerController)
 
 router.use("/api/user", getRequestUser, userController)

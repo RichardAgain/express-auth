@@ -1,8 +1,22 @@
 import { Router } from "express"
 import User from "../models/user.js"
 import Theme from "../models/theme.js"
+import multer from "multer"
 
 const router = Router()
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/fonts")
+  },
+  filename: function (req, file, cb) {
+    console.log(req, file)
+
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9)
+    cb(null, file.fieldname + "-" + uniqueSuffix)
+  },
+})
+const upload = multer({ storage })
 
 router.get("/", async (req, res) => {
   const user = await User.findById(req.user_id)
@@ -19,20 +33,39 @@ router.put("/", async (req, res) => {
     },
   }
 
-  const user = await User.findByIdAndUpdate(req.user_id, data,
-    { new: true, runValidators: true })
+  const user = await User.findByIdAndUpdate(req.user_id, data, {
+    new: true,
+    runValidators: true,
+  })
 
   res.json({ modifiedUser: user })
 })
 
 router.get("/theme", async (req, res) => {
-  const theme = await Theme.find({ user: req.user_id })
+  const theme = await Theme.findOne({ user: req.user_id })
 
   return res.json({ theme })
 })
 
-router.put("/theme", async (req, res) => {
-  const theme = await Theme.findOneAndUpdate({ user: req.user_id }, req.body, { new: true })
+router.patch("/theme", upload.single("font"), async (req, res) => {
+  let toUpdate = req.body
+
+  if (req.file) {
+    toUpdate = {
+      ...toUpdate,
+      fontPath: req.file.filename,
+    }
+  } else {
+    console.log('no file')
+  }
+
+  const theme = await Theme.findOneAndUpdate(
+    { user: req.user_id },
+    toUpdate,
+    { new: true }
+  )
+
+  console.log(toUpdate, 'theme')
 
   return res.json(theme)
 })
