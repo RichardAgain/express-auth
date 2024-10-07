@@ -7,11 +7,13 @@ import { authGuard, guestGuard } from './guards/auth.guard';
 import { IndexComponent } from './pages/index/index.component';
 import { LeafetMapComponent } from './shared/components/leafet-map/leafet-map.component';
 import { UserThemeComponent } from './pages/user-theme/user-theme.component';
+import DashboardComponent from './pages/business/dashboard/dashboard.component';
 
 export const routes: Routes = [
   { 
     path: '', 
     title: 'yeah idk',
+    canActivate: [guestGuard],
     component: IndexComponent,
   },
 
@@ -26,6 +28,12 @@ export const routes: Routes = [
     title: 'Register', 
     canActivate: [guestGuard],
     component: RegisterComponent
+  },
+  {
+    path: 'dashboard',
+    title: 'Dashboard',
+    canActivate: [authGuard],
+    component: DashboardComponent
   },
   {
     path: 'user',
