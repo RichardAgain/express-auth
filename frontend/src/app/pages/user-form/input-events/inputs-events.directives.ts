@@ -1,11 +1,11 @@
 import { Directive, HostListener } from '@angular/core';
-import { UserComponent } from '../user.component';
+import { UserFormComponent } from '../user-form.component';
 
 @Directive({
   selector: '[appInputEvents]'
 })
 export class InputEventsDirective {
-  constructor(private userComponent: UserComponent) {}
+  constructor(private userComponent: UserFormComponent) {}
 
   @HostListener('input') onInput() {
     this.userComponent.getEvents({ type: 'K', times: 1 });

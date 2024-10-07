@@ -5,14 +5,14 @@ import {
   FormGroup,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { SessionsService } from '../../services/session.service';
-import { LayoutComponent } from '../../components/layout/layout.component';
-import { LeafetMapComponent } from '../../components/leafet-map/leafet-map.component';
-import { GeoInfoService } from './geo-info.service';
+import { SessionsService } from '../../shared/services/session.service';
+import { LeafetMapComponent } from '../../shared/components/leafet-map/leafet-map.component';
+import { GeoInfoService } from './services/geo-info.service';
 import { CommonModule } from '@angular/common';
 import { InputEventsModule } from './input-events/inputs-events.module';
-import { UserService } from './user.service';
-import { ThemeService } from '../../services/theme.service';
+import { UserService } from './services/user.service';
+import { ThemeService } from '../../shared/services/theme.service';
+import { LayoutComponent } from '../../shared/components/layout/layout.component';
 
 interface KLMEvent {
   type: string;
@@ -29,10 +29,10 @@ interface KLMEvent {
     InputEventsModule,
     CommonModule,
   ],
-  templateUrl: './user.component.html',
-  styleUrl: './user.component.scss',
+  templateUrl: './user-form.component.html',
+  styleUrl: './user-form.component.scss',
 })
-export class UserComponent {
+export class UserFormComponent {
   user: any = null;
   userService = inject(UserService);
   locationService = inject(GeoInfoService);

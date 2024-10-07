@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+
 import { SessionsService } from '../../services/session.service';
 import { ThemeService } from '../../services/theme.service';
-import { UserService } from '../../pages/user/user.service';
-import { StorageService } from '../../services/storage.service';
+import { UserService } from '../../../pages/user-form/services/user.service';
 
 @Component({
   selector: 'app-layout',

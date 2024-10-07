@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { StorageService } from '../../../services/storage.service';
+import { StorageService } from '../../shared/services/storage.service';
 import { Router } from '@angular/router';
-import { ThemeService } from '../../../services/theme.service';
+import { ThemeService } from '../../shared/services/theme.service';
 
 @Injectable({
   providedIn: 'root'

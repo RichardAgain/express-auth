@@ -4,7 +4,7 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { SessionsService } from '../services/session.service';
+import { SessionsService } from '../shared/services/session.service';
 import { catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 

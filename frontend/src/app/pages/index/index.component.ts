@@ -1,7 +1,7 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
-import { LayoutComponent } from '../../components/layout/layout.component';
+import { LayoutComponent } from '../../shared/components/layout/layout.component';
 import { CommonModule } from '@angular/common';
-import { ThemeService } from '../../services/theme.service';
+import { ThemeService } from '../../shared/services/theme.service';
 
 interface Theme {
   primary: string;
