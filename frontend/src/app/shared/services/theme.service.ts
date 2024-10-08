@@ -29,11 +29,11 @@ export class ThemeService {
   changeTheme() {
     const sessionTheme = this.session.getSession()?.theme || ''
 
-    this.primary.set(sessionTheme.primary || 'black')
-    this.secondary.set(sessionTheme.primary || 'black')
-    this.accent.set(sessionTheme.primary || 'black')
-    this.text.set(sessionTheme.text || 'white')
-    this.background.set(sessionTheme.background || 'gray')
+    this.primary.set(sessionTheme.primary || '#2563eb')
+    this.secondary.set(sessionTheme.secondary || '#1f2937')
+    this.accent.set(sessionTheme.accent || 'black')
+    this.text.set(sessionTheme.text || 'black')
+    this.background.set(sessionTheme.background || 'white')
 
     this.textSize.set(sessionTheme.textSize || '16px')
     this.subSize.set(sessionTheme.subSize || '24px')
@@ -43,7 +43,7 @@ export class ThemeService {
   changeFont() {
     const font = new FontFace(
       'customFont',
-      `url(http://localhost:3000/fonts/${
+      `url(http://:3000/fonts/${
         this.session.getSession()?.theme.fontPath
       })`
     );
@@ -62,10 +62,32 @@ export class ThemeService {
     return this.http.patch('api/user/theme', formData);
   }
 
+  toDeafults() {
+    const storage = this.storage.getValue('session')
+
+    console.log('yeah')
+
+    this.storage.saveValue('session', JSON.stringify({
+      ...storage,
+      theme: {
+        primary: '#2563eb',
+        secondary: '#1f2937',
+        accent: 'black',
+        background: 'white',
+        text: 'black',
+        textSize: '16px',
+        subSize: '24px',
+        titleSize: '32px',
+      }
+    }))
+
+    this.changeTheme()
+  }
+
   saveThemeInStorage(theme: any) {
     const storage = this.storage.getValue('session')
 
-    console.log(storage)
+    console.log(theme)
 
     this.storage.saveValue('session', JSON.stringify({
       ...storage,

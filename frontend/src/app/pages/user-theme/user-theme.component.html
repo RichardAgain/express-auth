@@ -1,90 +1,110 @@
 <app-layout>
-  <pre>
-    <!-- {{ theme.options() | json }} -->
-  </pre>
+  <div class="grid grid-cols-2 gap-2">
+    <div class="">
+      <app-title>
+        I Am... All Of Me
+      </app-title>
 
-  <div style="display: flex; justify-content: center">
-    <div style="margin: 10px; border: 1px solid #ccc; padding: 5px">
-      <h3>Primary</h3>
-      <color-chrome
-        [disableAlpha]="true"
-        [color]="theme.primary()"
-        (onChangeComplete)="theme.primary.set($event.color.hex)"
-      >
-      </color-chrome>
+      <app-sub-title>
+        Song By Crush 40
+      </app-sub-title>
+
+      <app-text>
+        I see nor hear no evil <br>
+        Black writings on the wall <br>
+        Unleashed a million faces <br>
+        And one by one they fall 
+      </app-text>
+
+      <app-text>
+        Black-hearted evil <br>
+        Brave-hearted hero <br>
+        I am all, I am all, I am
+      </app-text>
     </div>
-    <div style="margin: 10px; border: 1px solid #ccc; padding: 5px">
-      <h3>Secondary</h3>
-      <color-chrome
-        [disableAlpha]="true"
-        [color]="theme.secondary()"
-        (onChangeComplete)="theme.secondary.set($event.color.hex)"
-      >
-      </color-chrome>
-    </div>
-    <div style="margin: 10px; border: 1px solid #ccc; padding: 5px">
-      <h3>Accent</h3>
-      <color-chrome
-        [disableAlpha]="true"
-        [color]="theme.accent()"
-        (onChangeComplete)="theme.accent.set($event.color.hex)"
-      >
-      </color-chrome>
-    </div>
-    <div style="margin: 10px; border: 1px solid #ccc; padding: 5px">
-      <h3>Text</h3>
-      <color-chrome
-        [disableAlpha]="true"
-        [color]="theme.text()"
-        (onChangeComplete)="theme.text.set($event.color.hex)"
-      >
-      </color-chrome>
-    </div>
-    <div style="margin: 10px; border: 1px solid #ccc; padding: 5px">
-      <h3>Background</h3>
-      <color-chrome
-        [disableAlpha]="true"
-        [color]="theme.background()"
-        (onChangeComplete)="theme.background.set($event.color.hex)"
-      >
-      </color-chrome>
+
+    <div class="shadow-lg p-8 rounded-md overflow-auto max-h-[80vh]"
+        [style.background-color]="theme.accent()" [style.color]="theme.background()">
+      <div class="flex flex-wrap gap-8 justify-center">
+        <h3 class="font-semibold mb-2 text-xl [text-shadow:_0_2px_4px_rgb(0_0_0_/_40%)]">Text</h3>
+        <ngx-slider
+          [(value)]="textSize"
+          [options]="{ floor: 8, ceil: 40 }"
+          (userChange)="theme.textSize.set(textSize + 'px')"
+        ></ngx-slider>
+        <h3 class="font-semibold mb-2 text-xl [text-shadow:_0_2px_4px_rgb(0_0_0_/_40%)]">Titles</h3>
+        <ngx-slider
+          [(value)]="titleSize"
+          [options]="{ floor: 24, ceil: 72 }"
+          (userChange)="theme.titleSize.set(titleSize + 'px')"
+        ></ngx-slider>
+        <h3 class="font-semibold mb-2 text-xl [text-shadow:_0_2px_4px_rgb(0_0_0_/_40%)]">Subtitles</h3>
+        <ngx-slider
+          [(value)]="subSize"
+          [options]="{ floor: 16, ceil: 56 }"
+          (userChange)="theme.subSize.set(subSize + 'px')"
+        ></ngx-slider>
+
+
+        <div>
+          <h3 class="text-center font-semibold mb-2 text-xl [text-shadow:_0_2px_4px_rgb(0_0_0_/_40%)]">Primary</h3>
+          <color-chrome
+            [disableAlpha]="true"
+            [color]="theme.primary()"
+            (onChangeComplete)="theme.primary.set($event.color.hex)"
+          >
+          </color-chrome>
+        </div>
+        <div>
+          <h3 class="text-center font-semibold mb-2 text-xl [text-shadow:_0_2px_4px_rgb(0_0_0_/_40%)]">Secondary</h3>
+          <color-chrome
+            [disableAlpha]="true"
+            [color]="theme.secondary()"
+            (onChangeComplete)="theme.secondary.set($event.color.hex)"
+          >
+          </color-chrome>
+        </div>
+        <div>
+          <h3 class="text-center font-semibold mb-2 text-xl [text-shadow:_0_2px_4px_rgb(0_0_0_/_40%)]">Accent</h3>
+          <color-chrome
+            [disableAlpha]="true"
+            [color]="theme.accent()"
+            (onChangeComplete)="theme.accent.set($event.color.hex)"
+          >
+          </color-chrome>
+        </div>
+        <div>
+          <h3 class="text-center font-semibold mb-2 text-xl [text-shadow:_0_2px_4px_rgb(0_0_0_/_40%)]">Text</h3>
+          <color-chrome
+            [disableAlpha]="true"
+            [color]="theme.text()"
+            (onChangeComplete)="theme.text.set($event.color.hex)"
+          >
+          </color-chrome>
+        </div>
+        <div>
+          <h3 class="text-center font-semibold mb-2 text-xl drop-shadow-sm [text-shadow:_0_2px_4px_rgb(0_0_0_/_40%)]">Background</h3>
+          <color-chrome
+            [disableAlpha]="true"
+            [color]="theme.background()"
+            (onChangeComplete)="theme.background.set($event.color.hex)"
+          >
+          </color-chrome>
+        </div>
+      </div>
+
+      <div>
+        <h3>Upload Font</h3>
+        <input
+          type="file"
+          accept=".woff,.ttf"
+          (change)="onFileSelected($event)"
+        />
+      </div>
     </div>
   </div>
 
-  <ngx-slider
-    [(value)]="textSize"
-    [options]="{ floor: 8, ceil: 32 }"
-    (userChange)="theme.textSize.set(textSize + 'px')"
-  ></ngx-slider>
-  <ngx-slider
-    [(value)]="subSize"
-    [options]="{ floor: 16, ceil: 40 }"
-    (userChange)="theme.subSize.set(subSize + 'px')"
-  ></ngx-slider>
-  <ngx-slider
-    [(value)]="titleSize"
-    [options]="{ floor: 24, ceil: 48 }"
-    (userChange)="theme.titleSize.set(titleSize + 'px')"
-  ></ngx-slider>
+  <app-button-primary label="Save Theme" (click)="saveTheme()" />
+  <app-button-outline label="Reset Theme" (click)="theme.toDeafults()" />
 
-  <button (click)="saveTheme()">SAVE</button>
-
-  <p [style.font-size]="theme.titleSize()">
-    THIS IS A TITLE
-  </p>
-
-  <p [style.font-size]="theme.subSize()">
-    This is a Subtitle
-  </p>
-
-  <p [style.font-size]="theme.textSize()" [style.color]="theme.text()" style="font-family: 'Customfont';">
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi dicta quo
-    incidunt a aspernatur necessitatibus iste recusandae assumenda ullam dolore,
-    eveniet id quidem eius asperiores tempore molestias. Similique, nostrum nam.
-  </p>
-
-  <div style="margin: 10px; border: 1px solid #ccc; padding: 5px">
-    <h3>Upload Font</h3>
-    <input type="file" accept=".woff,.ttf" (change)="onFileSelected($event)" />
-  </div>
 </app-layout>

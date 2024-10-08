@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ThemeService } from '../../../services/theme.service';
 import { ProfileIconComponent } from './profile-icon/profile-icon.component';
 
 @Component({
@@ -8,6 +9,6 @@ import { ProfileIconComponent } from './profile-icon/profile-icon.component';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
-
+  theme = inject(ThemeService)
 
 }

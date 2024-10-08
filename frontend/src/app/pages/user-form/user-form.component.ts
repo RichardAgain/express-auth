@@ -5,14 +5,13 @@ import {
   FormGroup,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { SessionsService } from '../../shared/services/session.service';
 import { LeafetMapComponent } from '../../shared/components/leafet-map/leafet-map.component';
 import { GeoInfoService } from './services/geo-info.service';
 import { CommonModule } from '@angular/common';
 import { InputEventsModule } from './input-events/inputs-events.module';
 import { UserService } from './services/user.service';
 import { ThemeService } from '../../shared/services/theme.service';
-import { LayoutComponent } from '../../shared/components/layout/layout.component';
+import { LayoutComponent } from '../../shared/components/dahsboard/layout/layout.component';
 
 interface KLMEvent {
   type: string;
@@ -46,6 +45,7 @@ export class UserFormComponent {
 
   constructor () {
     this.getUser()
+    this.theme.changeTheme()
   }
 
   getUser() {
@@ -59,8 +59,6 @@ export class UserFormComponent {
         ...user,
         dob: formattedDate,
       });
-
-
     })
   }
 

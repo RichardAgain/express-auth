@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { SessionsService } from '../../../services/session.service';
+import { SessionsService } from '../../../../services/session.service';
 
 @Component({
   selector: 'app-profile-icon',

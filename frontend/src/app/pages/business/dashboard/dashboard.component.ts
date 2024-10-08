@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LayoutComponent } from '../../../shared/components/layout/layout.component';
+import { LayoutComponent } from '../../../shared/components/dahsboard/layout/layout.component';
 
 @Component({
   selector: 'app-dashboard',

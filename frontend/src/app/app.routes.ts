@@ -13,7 +13,7 @@ export const routes: Routes = [
   { 
     path: '', 
     title: 'yeah idk',
-    canActivate: [guestGuard],
+    // canActivate: [guestGuard],
     component: IndexComponent,
   },
 

@@ -50,6 +50,8 @@ router.get("/theme", async (req, res) => {
 router.patch("/theme", upload.single("font"), async (req, res) => {
   let toUpdate = req.body
 
+  console.log(toUpdate, 'toUpdate')
+
   if (req.file) {
     toUpdate = {
       ...toUpdate,

@@ -3,12 +3,27 @@ import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../shared/services/theme.service';
 import { ColorChromeModule } from 'ngx-color/chrome';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-import { LayoutComponent } from '../../shared/components/layout/layout.component';
+import { LayoutComponent } from '../../shared/components/dahsboard/layout/layout.component';
+import { ButtonPrimaryComponent } from '../../shared/components/buttons/button-primary/button-primary.component';
+import { ButtonOutlineComponent } from '../../shared/components/buttons/button-outline/button-outline.component';
+import { TextComponent } from '../../shared/components/text/text.component';
+import { TitleComponent } from '../../shared/components/title/title.component';
+import { SubTitleComponent } from '../../shared/components/sub-title/sub-title.component';
 
 @Component({
   selector: 'app-user-theme',
   standalone: true,
-  imports: [LayoutComponent, CommonModule, ColorChromeModule, NgxSliderModule],
+  imports: [
+    LayoutComponent,
+    CommonModule,
+    ColorChromeModule,
+    NgxSliderModule,
+    ButtonPrimaryComponent,
+    ButtonOutlineComponent,
+    TextComponent,
+    TitleComponent,
+    SubTitleComponent,
+  ],
   templateUrl: './user-theme.component.html',
   styleUrl: './user-theme.component.scss',
 })
@@ -20,9 +35,9 @@ export class UserThemeComponent {
   fontFile: File | null = null;
 
   constructor() {
-    this.textSize = parseInt(this.theme.textSize().replace('px', ''))
-    this.subSize = parseInt(this.theme.subSize().replace('px', ''))
-    this.titleSize = parseInt(this.theme.titleSize().replace('px', ''))
+    this.textSize = parseInt(this.theme.textSize().replace('px', ''));
+    this.subSize = parseInt(this.theme.subSize().replace('px', ''));
+    this.titleSize = parseInt(this.theme.titleSize().replace('px', ''));
   }
 
   onFileSelected(event: Event) {
@@ -45,7 +60,7 @@ export class UserThemeComponent {
   saveTheme() {
     let formData = new FormData();
 
-    formData.append('primary', this.theme.primary())
+    formData.append('primary', this.theme.primary());
     formData.append('secondary', this.theme.secondary());
     formData.append('accent', this.theme.accent());
     formData.append('background', this.theme.background());
@@ -62,9 +77,9 @@ export class UserThemeComponent {
     const $upload = this.theme.saveTheme(formData);
 
     $upload.subscribe((res) => {
-      console.log(res, ' saved succesfully!')
+      console.log(res, ' saved succesfully!');
 
-      this.theme.saveThemeInStorage(res)
+      this.theme.saveThemeInStorage(res);
     });
   }
 }
