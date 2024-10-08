@@ -1,24 +1,26 @@
 <!-- Hero -->
 <section
-class="flex flex-wrap items-center -mx-3 font-sans px-4 mx-auto w-full lg:max-w-screen-lg sm:max-w-screen-sm md:max-w-screen-md pb-20">
+            class="flex flex-wrap items-center -mx-3 px-4 mx-auto w-full lg:max-w-screen-lg sm:max-w-screen-sm md:max-w-screen-md pb-20">
 <!-- Column-1 -->
 <div class="px-3 w-full lg:w-2/5">
     <div
         class="mx-auto mb-8 max-w-lg text-center lg:mx-0 lg:max-w-md lg:text-left">
-        <h2 class="mb-4 text-3xl font-bold text-left lg:text-5xl">
+        <app-title class="mb-4 text-3xl font-bold text-left lg:text-5xl">
             Exclusive Web Site For
 
-            <span class="text-5xl text-blue-500 leading-relaxeds"
+            <span class="leading-relaxeds" [style.color]="theme.primary()"
                 >Sonic
             </span>
 
             The Hedgehog
-        </h2>
+        </app-title>
 
-        <p
-            class="visible mx-0 mt-3 mb-0 text-sm leading-relaxed text-left text-slate-400">
-            main protagonist of the video game saga of the same name and Sega's mascot
-        </p>
+        <div class="mt-8">
+            <app-text
+                class="visible mx-0 mt-6 mb-0 text-sm leading-relaxed text-left text-slate-400">
+                Main protagonist of the video game saga of the same name and Sega's mascot
+            </app-text>
+        </div>
     </div>
 
     <div class="text-center lg:text-left">

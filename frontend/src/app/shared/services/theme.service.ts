@@ -31,19 +31,19 @@ export class ThemeService {
 
     this.primary.set(sessionTheme.primary || '#2563eb')
     this.secondary.set(sessionTheme.secondary || '#1f2937')
-    this.accent.set(sessionTheme.accent || 'black')
+    this.accent.set(sessionTheme.accent || '#42566a')
     this.text.set(sessionTheme.text || 'black')
     this.background.set(sessionTheme.background || 'white')
 
     this.textSize.set(sessionTheme.textSize || '16px')
     this.subSize.set(sessionTheme.subSize || '24px')
-    this.titleSize.set(sessionTheme.titleSize || '32px')
+    this.titleSize.set(sessionTheme.titleSize || '48px')
   }
 
   changeFont() {
     const font = new FontFace(
       'customFont',
-      `url(http://:3000/fonts/${
+      `url(http://localhost:3000/fonts/${
         this.session.getSession()?.theme.fontPath
       })`
     );
@@ -72,12 +72,12 @@ export class ThemeService {
       theme: {
         primary: '#2563eb',
         secondary: '#1f2937',
-        accent: 'black',
+        accent: '#42566a',
         background: 'white',
         text: 'black',
         textSize: '16px',
         subSize: '24px',
-        titleSize: '32px',
+        titleSize: '48px',
       }
     }))
 

@@ -5,7 +5,6 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { UserFormComponent } from './pages/user-form/user-form.component';
 import { authGuard, guestGuard } from './guards/auth.guard';
 import { IndexComponent } from './pages/index/index.component';
-import { LeafetMapComponent } from './shared/components/leafet-map/leafet-map.component';
 import { UserThemeComponent } from './pages/user-theme/user-theme.component';
 import DashboardComponent from './pages/business/dashboard/dashboard.component';
 
@@ -13,7 +12,6 @@ export const routes: Routes = [
   { 
     path: '', 
     title: 'yeah idk',
-    // canActivate: [guestGuard],
     component: IndexComponent,
   },
 

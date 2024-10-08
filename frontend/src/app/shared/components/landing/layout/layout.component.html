@@ -1,18 +1,6 @@
-<!-- Gogole Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap"
-    rel="stylesheet" />
-    
-<style>
-    section {
-        font-family: "Poppins", sans-serif;
-    }
-</style>
-
 <!-- Page Main -->
-<main class="flex flex-col items-center justify-center mt-32">
+<main class="flex flex-col items-center justify-center pt-32"
+    [style]="{ 'background-color' : theme.background() }">
 
     <app-header/>
 
@@ -23,25 +11,26 @@
         class="flex flex-col w-full h-[500px] bg-cover bg-fixed bg-center flex justify-center items-center"
         style="
             background-image: url('https://w.wallhaven.cc/full/6o/wallhaven-6o13ll.png');
-        ">
-        <h1 class="text-white text-5xl font-semibold mt-20 mb-10 text-center">
+        "
+        [style.color]="theme.background()">
+        <h1 class="text-5xl font-semibold mt-20 mb-10 text-center">
             Sonic The Hedgehog
         </h1>
 
-        <span class="text-center font-bold my-20 text-white/90">
+        <span class="text-center font-bold my-20">
             <a
                 href="https://sonicthehedgehog.com/es-es/author/sonic-team/"
                 target="_blank"
-                class="text-white/90 hover:text-white">
+                class="opacity-90 hover:opacity-100">
                 Sonic Team
             </a>
 
-        <hr class="my-4" />
+            <hr class="my-4" />
 
             <a
                 href="https://sonic.fandom.com/es/wiki/Sonic_the_Hedgehog"
                 target="_blank"
-                class="text-white/90 hover:text-white">
+                class="opacity-90 hover:opacity-100">
                 Sonic Wiki
             </a>
 
@@ -51,14 +40,14 @@
                 <a
                     href="https://github.com/RichardAgain"
                     target="_blank"
-                    class="text-white/90 hover:text-white">
+                    class="opacity-90 hover:opacity-100">
                     RichardAgain
                 </a>
                 |
                 <a
                     href="https://github.com/Spotito"
                     target="_blank"
-                    class="text-white/90 hover:text-white">
+                    class="opacity-90 hover:opacity-100">
                     Spotito
                 </a>
             </p>
@@ -66,7 +55,9 @@
     </section>
 
     <section class="p-20 space-y-8">
-        <h1 class="text-4xl text-center my-20">A Look at Sonic The Hedgehog</h1>
+        <app-title class="text-center my-20">A Look at Sonic The Hedgehog</app-title>
+
+        <app-sub-title class="text-center">His World</app-sub-title><br>
         
         <app-text>
             Since he entered the battle against injustice, Sonic has been the winner of
@@ -132,8 +123,8 @@
         </app-text>
     </section>
     <!-- Footer -->
-    <footer class="bg-gray-800 pt-10 sm:mt-10 pt-10 w-full">
-        <div class="max-w-6xl m-auto text-gray-800 flex flex-wrap justify-left">
+    <footer class="pt-10 sm:mt-10 pt-10 w-full" [style]="{ 'background-color': theme.secondary(), 'color': theme.background() }">
+        <div class="max-w-6xl m-auto flex flex-wrap justify-left">
             <!-- Col-1 -->
             <div class="p-5 w-1/2 sm:w-4/12 md:w-3/12">
                 <!-- Col Title -->
@@ -144,37 +135,37 @@
                 <!-- Links -->
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Installation
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Release Notes
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Upgrade Guide
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Using with Preprocessors
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Optimizing for Production
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Browser Support
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     IntelliSense
                 </a>
             </div>
@@ -189,37 +180,37 @@
                 <!-- Links -->
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Utility-First
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Responsive Design
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Hover, Focus, & Other States
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Dark Mode
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Adding Base Styles
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Extracting Components
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Adding New Utilities
                 </a>
             </div>
@@ -234,37 +225,37 @@
                 <!-- Links -->
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Configuration
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Theme Configuration
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Breakpoints
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Customizing Colors
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Customizing Spacing
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Configuring Variants
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Plugins
                 </a>
             </div>
@@ -279,22 +270,22 @@
                 <!-- Links -->
                 <a
                     href="https://github.com/RichardAgain/express-auth"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     GitHub
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Discord
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     Twitter
                 </a>
                 <a
                     href="#"
-                    class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                    class="my-3 block opacity-85 hover:opacity-100 text-sm font-medium duration-700">
                     YouTube
                 </a>
             </div>
@@ -304,7 +295,7 @@
         <div class="pt-2">
             <div
                 class="flex pb-5 px-3 m-auto pt-5 border-t border-gray-500 text-gray-400 text-sm flex-col md:flex-row max-w-6xl">
-                <div class="mt-2">© Copyright 2024-year. All Rights Reserved.</div>
+                <div class="mt-2">Brought to you by Spoty and Richard © Copyright 2024-year. All Rights Reserved.</div>
 
                 <!-- Required Unicons (if you want) -->
                 <div class="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
@@ -327,11 +318,6 @@
             </div>
         </div>
     </footer>
-
-    
-
-    
-
 
 </main>
 
