@@ -23,6 +23,7 @@ export class ThemeService {
 
   constructor () {
     this.changeTheme()
+    this.changeFont()
   }
 
   changeTheme() {
@@ -42,7 +43,7 @@ export class ThemeService {
   }
 
   changeFont() {
-    if (!this.session.getSession()?.theme.fontPath) return
+    // if (!this.session.getSession()?.theme.fontPath) return
 
     const font = new FontFace(
       'customFont',
@@ -51,7 +52,7 @@ export class ThemeService {
       })`
     );
 
-
+    
     font.load()
       .then((loadedFont) => {
         (document.fonts as any).add(loadedFont);
@@ -69,8 +70,6 @@ export class ThemeService {
 
   toDeafults() {
     const storage = this.storage.getValue('session')
-
-    console.log('yeah')
 
     this.storage.saveValue('session', JSON.stringify({
       ...storage,

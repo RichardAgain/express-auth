@@ -18,4 +18,8 @@ import { SubTitleComponent } from "../../sub-title/sub-title.component";
 })
 export class LayoutComponent {
   theme = inject(ThemeService)
+
+  // constructor () {
+  //   this.theme.changeTheme()
+  // }
 }

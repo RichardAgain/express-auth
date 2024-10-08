@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
 import { ProfileIconComponent } from './profile-icon/profile-icon.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { SessionsService } from '../../../services/session.service';
 
 @Component({
@@ -13,9 +13,11 @@ import { SessionsService } from '../../../services/session.service';
 export class HeaderComponent {
   theme = inject(ThemeService)
   session = inject(SessionsService)
+  router = inject(Router)
 
   logOut () {
     this.session.signOut()
+    this.router.navigateByUrl('/')
   }
 
 }
