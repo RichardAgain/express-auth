@@ -9,6 +9,7 @@ import { ButtonOutlineComponent } from '../../shared/components/buttons/button-o
 import { TextComponent } from '../../shared/components/text/text.component';
 import { TitleComponent } from '../../shared/components/title/title.component';
 import { SubTitleComponent } from '../../shared/components/sub-title/sub-title.component';
+import { LoadingService } from '../../shared/components/loading/loading.service';
 
 @Component({
   selector: 'app-user-theme',
@@ -31,6 +32,7 @@ export class UserThemeComponent {
   textSize: number = 16;
   subSize: number = 24;
   titleSize: number = 32;
+  loading = inject(LoadingService)
   theme = inject(ThemeService);
   fontFile: File | null = null;
 
@@ -58,6 +60,8 @@ export class UserThemeComponent {
   }
 
   saveTheme() {
+    this.loading.isLoading.set(true)
+
     let formData = new FormData();
 
     formData.append('primary', this.theme.primary());
@@ -80,6 +84,8 @@ export class UserThemeComponent {
       console.log(res, ' saved succesfully!');
 
       this.theme.saveThemeInStorage(res);
-    });
+
+      this.loading.isLoading.set(false)
+    })
   }
 }

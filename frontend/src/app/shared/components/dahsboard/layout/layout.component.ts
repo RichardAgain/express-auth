@@ -7,11 +7,12 @@ import { HeaderComponent } from '../header/header.component';
 import { UserService } from '../../../../pages/user-form/services/user.service';
 import { SessionsService } from '../../../services/session.service';
 import { ThemeService } from '../../../services/theme.service';
+import { LoadingComponent } from "../../loading/loading.component";
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, RouterOutlet, SidebarComponent, HeaderComponent, FooterComponent],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, SidebarComponent, HeaderComponent, FooterComponent, LoadingComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
