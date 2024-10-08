@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { SessionsService } from '../../../../services/session.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-profile-icon',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './profile-icon.component.html',
   styleUrl: './profile-icon.component.scss'
 })

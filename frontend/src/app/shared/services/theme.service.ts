@@ -23,7 +23,6 @@ export class ThemeService {
 
   constructor () {
     this.changeTheme()
-    this.changeFont()
   }
 
   changeTheme() {
@@ -36,17 +35,22 @@ export class ThemeService {
     this.background.set(sessionTheme.background || 'white')
 
     this.textSize.set(sessionTheme.textSize || '16px')
-    this.subSize.set(sessionTheme.subSize || '24px')
+    this.subSize.set(sessionTheme.subSize || '30px')
     this.titleSize.set(sessionTheme.titleSize || '48px')
+
+    this.changeFont()
   }
 
   changeFont() {
+    if (!this.session.getSession()?.theme.fontPath) return
+
     const font = new FontFace(
       'customFont',
       `url(http://localhost:3000/fonts/${
         this.session.getSession()?.theme.fontPath
       })`
     );
+
 
     font.load()
       .then((loadedFont) => {
@@ -56,6 +60,7 @@ export class ThemeService {
       .catch((error) => {
         console.error('Failed to load font:', error);
       });
+    
   }
 
   saveTheme(formData: any) {
@@ -76,7 +81,7 @@ export class ThemeService {
         background: 'white',
         text: 'black',
         textSize: '16px',
-        subSize: '24px',
+        subSize: '30px',
         titleSize: '48px',
       }
     }))
