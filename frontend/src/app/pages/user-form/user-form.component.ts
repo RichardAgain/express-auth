@@ -12,6 +12,8 @@ import { InputEventsModule } from './input-events/inputs-events.module';
 import { UserService } from './services/user.service';
 import { ThemeService } from '../../shared/services/theme.service';
 import { LayoutComponent } from '../../shared/components/dahsboard/layout/layout.component';
+import { ButtonOutlineComponent } from "../../shared/components/buttons/button-outline/button-outline.component";
+import { ButtonPrimaryComponent } from "../../shared/components/buttons/button-primary/button-primary.component";
 
 interface KLMEvent {
   type: string;
@@ -27,7 +29,9 @@ interface KLMEvent {
     LeafetMapComponent,
     InputEventsModule,
     CommonModule,
-  ],
+    ButtonOutlineComponent,
+    ButtonPrimaryComponent
+],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.scss',
 })

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ProfileIconComponent } from "../../dahsboard/header/profile-icon/profile-icon.component";
 import { SessionsService } from '../../../services/session.service';
 
@@ -13,6 +13,7 @@ import { SessionsService } from '../../../services/session.service';
 })
 export class HeaderComponent {
   session = inject(SessionsService)
+  router = inject(Router)
   theme = inject(ThemeService)
 
   username: string | undefined = ''
