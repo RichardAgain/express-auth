@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import * as L from 'leaflet';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-leafet-map',
@@ -10,6 +11,7 @@ import * as L from 'leaflet';
 })
 export class LeafetMapComponent implements OnInit {
   map: any;
+  theme = inject(ThemeService)
   markers: L.Marker[] = [];
 
   @Input() coordinates: { lat: number, lng: number } = { lat: 10.236396928729727, lng: -67.96242397055313 };
@@ -24,6 +26,10 @@ export class LeafetMapComponent implements OnInit {
     iconUrl: './unnamed.png',
     iconSize: [25, 41],
   });
+
+  constructor () {
+    const zoomIn = document.querySelector('.leaflet-control-zoom-in')
+  }
 
   initMap() {
     this.map = L.map('map').setView([this.coordinates.lat, this.coordinates.lng], 18);
