@@ -1,0 +1,28 @@
+@use './styles/triangle_partial.scss' as triangle;
+
+.triangle-container-first {
+    @include triangle.triangle-container;
+}
+
+.triangle-container-second {
+    @include triangle.triangle-container;
+}
+
+.perspective-container {
+    // border: black 1px solid;
+    scale: 1;
+    perspective: 10000px;
+    // rotate: y 45deg;
+    transform-style: preserve-3d;
+    animation: girar 10s infinite;
+}
+
+@keyframes girar {
+    0% {
+      transform: none;
+    }
+  
+    100% {
+      rotate: 1 1 1 360deg;
+    }
+  }
