@@ -1,18 +1,46 @@
 @use './styles/triangle_partial.scss' as triangle;
+@use './styles/cube_partial.scss' as cube;
+@use './styles/gram_partial.scss' as paralelogram;
+
+@mixin container {
+  transform-style: preserve-3d;
+  display: inline-block;
+  // position: absolute;
+}
 
 .triangle-container-first {
-    @include triangle.triangle-container;
+  @include container;
+  @include triangle.triangle-container;
 }
 
 .triangle-container-second {
+  @include container;
+  @include triangle.triangle-container;
+}
+
+.cube-container {
+  // animation: girar 5s;
+  @include container;
+  @include cube.cube-container;
+}
+
+.paralelogram-container {
+  @include container;
+  @include paralelogram.paralelogram-container;
+  border: 1px solid black;
+
+  .paralelogram-part {
+    transform-style: preserve-3d;
+    display: inline-block;
     @include triangle.triangle-container;
+  }
 }
 
 .perspective-container {
     // border: black 1px solid;
     scale: 1;
     perspective: 10000px;
-    // rotate: y 45deg;
+    // rotate: x 45deg;
     transform-style: preserve-3d;
     animation: girar 10s infinite;
 }
@@ -21,8 +49,13 @@
     0% {
       transform: none;
     }
-  
+    33% {
+      transform: rotateX(360deg);
+    }
+    66% {
+      transform: rotateX(360deg) rotateY(360deg);
+    }
     100% {
-      rotate: 1 1 1 360deg;
+      transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
     }
   }

@@ -1,0 +1,40 @@
+@mixin cube {
+    width: 226.27px;
+    height: 226.27px;
+    // rotate: z 45deg;
+    translate: 0px 0px 30px;
+}
+
+@mixin cube-container {
+    .cube {
+        @include cube;
+    }
+
+    .edge1 {
+        width: 226.27px;
+        height: 60px;
+        translate: 0px -30px 0px;
+        rotate: 1 0 0 90deg;
+    }
+
+    .edge2 {
+        width: 226.27px;
+        height: 60px;
+        translate: 0px 196.27px 0px;
+        rotate: 1 0 0 90deg;
+    }
+
+    .edge3 {
+        width: 226.27px;
+        height: 60px;
+        translate: 113.13px 83.13px 0px;
+        transform: rotateY(90deg) rotateZ(90deg);
+    }
+
+    .edge4 {
+        width: 226.27px;
+        height: 60px;
+        translate: -113.13px 83.13px 0px;
+        transform: rotateY(90deg) rotateZ(90deg);
+    }
+}

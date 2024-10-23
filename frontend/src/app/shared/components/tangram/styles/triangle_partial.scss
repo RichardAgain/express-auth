@@ -7,8 +7,6 @@
 }
 
 @mixin triangle-container {
-    transform-style: preserve-3d;
-
     .triangle {
         @include triangle;
     }
