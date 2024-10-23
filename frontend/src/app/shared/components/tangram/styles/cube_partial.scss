@@ -10,6 +10,11 @@
         @include cube;
     }
 
+    .cube-back {
+        @include cube;
+        translate: 0px 0px -30px;
+    }
+
     .edge1 {
         width: 226.27px;
         height: 60px;
@@ -20,21 +25,21 @@
     .edge2 {
         width: 226.27px;
         height: 60px;
-        translate: 0px 196.27px 0px;
+        translate: 0px -256.27px 0px;
         rotate: 1 0 0 90deg;
     }
 
     .edge3 {
         width: 226.27px;
         height: 60px;
-        translate: 113.13px 83.13px 0px;
+        translate: 113.13px -143.13px 0px;
         transform: rotateY(90deg) rotateZ(90deg);
     }
 
     .edge4 {
         width: 226.27px;
         height: 60px;
-        translate: -113.13px 83.13px 0px;
+        translate: -113.13px -143.13px 0px;
         transform: rotateY(90deg) rotateZ(90deg);
     }
 }

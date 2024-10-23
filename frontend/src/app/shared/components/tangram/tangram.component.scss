@@ -1,11 +1,13 @@
 @use './styles/triangle_partial.scss' as triangle;
 @use './styles/cube_partial.scss' as cube;
 @use './styles/gram_partial.scss' as paralelogram;
+@use './styles/double_partial.scss' as double;
+@use './styles/large_partial.scss' as large;
 
 @mixin container {
   transform-style: preserve-3d;
   display: inline-block;
-  // position: absolute;
+  position: relative;
 }
 
 .triangle-container-first {
@@ -27,22 +29,42 @@
 .paralelogram-container {
   @include container;
   @include paralelogram.paralelogram-container;
-  border: 1px solid black;
 
   .paralelogram-part {
-    transform-style: preserve-3d;
     display: inline-block;
     @include triangle.triangle-container;
   }
 }
 
+.double-container {
+  @include container;
+  @include double.double-container;
+  @include triangle.triangle-container;
+  scale: 1.41;
+}
+
+.large-container-first {
+  @include container;
+  @include large.large-container;
+  @include triangle.triangle-container;
+  scale: 2;
+}
+
+.large-container-second {
+  @include container;
+  @include large.large-container;
+  @include triangle.triangle-container;
+  scale: 2;
+}
+
 .perspective-container {
-    // border: black 1px solid;
+    border: black 1px solid;
     scale: 1;
     perspective: 10000px;
     // rotate: x 45deg;
     transform-style: preserve-3d;
     animation: girar 10s infinite;
+    scale: 0.5;
 }
 
 @keyframes girar {
