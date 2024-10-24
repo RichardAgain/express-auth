@@ -1,0 +1,13 @@
+@mixin initial {
+    transform: rotateZ(90deg);
+    translate: -150px 150px 0px;
+}
+
+@keyframes large_second_animation {
+    0% {
+        @include initial;
+    }
+    100% {
+        @include initial;
+    }
+}

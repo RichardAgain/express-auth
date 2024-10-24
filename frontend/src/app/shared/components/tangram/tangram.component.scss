@@ -4,26 +4,36 @@
 @use './styles/double_partial.scss' as double;
 @use './styles/large_partial.scss' as large;
 
+@use './animations/large_first.scss';
+@use './animations/large_second.scss';
+@use './animations/triangle_second.scss';
+@use './animations/double_frames.scss';
+@use './animations/cube_frames.scss';
+@use './animations/triangle_first.scss';
+
 @mixin container {
   transform-style: preserve-3d;
   display: inline-block;
-  position: relative;
+  position: absolute;
 }
 
 .triangle-container-first {
   @include container;
   @include triangle.triangle-container;
+  animation: triangle_first_frames 10s infinite;
 }
 
 .triangle-container-second {
   @include container;
   @include triangle.triangle-container;
+  animation: triangle_second_frames 10s infinite;
 }
 
 .cube-container {
   // animation: girar 5s;
   @include container;
   @include cube.cube-container;
+  animation: cube_frames 10s infinite;
 }
 
 .paralelogram-container {
@@ -41,6 +51,7 @@
   @include double.double-container;
   @include triangle.triangle-container;
   scale: 1.41;
+  animation: double_frames 10s infinite;
 }
 
 .large-container-first {
@@ -48,6 +59,7 @@
   @include large.large-container;
   @include triangle.triangle-container;
   scale: 2;
+  animation: large_first_animation 10s infinite;
 }
 
 .large-container-second {
@@ -55,16 +67,17 @@
   @include large.large-container;
   @include triangle.triangle-container;
   scale: 2;
+  animation: large_second_animation 10s infinite;
 }
 
 .perspective-container {
-    border: black 1px solid;
-    scale: 1;
-    perspective: 10000px;
-    // rotate: x 45deg;
-    transform-style: preserve-3d;
-    animation: girar 10s infinite;
-    scale: 0.5;
+  height: 400px;
+  border: black 1px solid;
+  transform-style: preserve-3d;
+  perspective: 10000px;
+  scale: 0.8;
+
+  animation: girar 10s infinite;
 }
 
 @keyframes girar {

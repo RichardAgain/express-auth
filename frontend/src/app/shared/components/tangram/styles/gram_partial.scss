@@ -1,4 +1,9 @@
+@use '../animations/gram_frames.scss';
+
 @mixin paralelogram-container {
+    animation: positions 10s infinite;
+    // animation: large_first_animation 10s infinite;
+
     .p-second {
         translate: -160px 14.5px 0px;
         rotate: 0 0 1 180deg;

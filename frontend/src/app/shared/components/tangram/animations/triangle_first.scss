@@ -1,0 +1,13 @@
+@mixin initial {
+    transform: rotateZ(270deg);
+    translate: 245px -14px 0px;
+}
+
+@keyframes triangle_first_frames {
+    0% {
+        @include initial;
+    }
+    100% {
+        @include initial;
+    }
+}

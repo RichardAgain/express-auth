@@ -1,0 +1,13 @@
+@mixin initial {
+    transform: rotateZ(135deg);
+    translate: 260px 403px 0px;
+}
+
+@keyframes double_frames {
+    0% {
+        @include initial;
+    }
+    100% {
+        @include initial;
+    }
+}
