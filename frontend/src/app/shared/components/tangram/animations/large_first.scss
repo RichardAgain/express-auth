@@ -1,8 +1,68 @@
+@mixin initial {
+    transform:  rotateZ(180deg);
+}
+
 @keyframes large_first_animation {
     0% {
+        @include initial;
+    }
+    8% {
         transform:  rotateZ(180deg);
+        translate: 0px 0px -70px;
+    }
+    16% {
+        transform:  rotateZ(45deg);
+        translate: 200px 0px -70px;
+    }
+    25% {
+        transform:  rotateZ(45deg);
+        translate: 200px 0px 0px;
+    }
+    33% {
+        transform:  rotateZ(45deg);
+        translate: 200px 0px -70px;
+    }
+    41% {
+        transform:  rotateZ(-45deg);
+        translate: -90px 0px -70px;
+    }   
+    50% {
+        transform:  rotateZ(-45deg);
+        translate: -90px 0px 0px;
+    }
+    58% {
+        transform:  rotateZ(-45deg);
+        translate: -90px 0px -70px;
+    }
+    66% {
+        transform:  rotateZ(-45deg);
+        translate: 200px -100px -70px;
+    }
+    75% {
+        transform:  rotateZ(-45deg);
+        translate: 200px -100px 0px;
+    }
+    83% {
+        transform:  rotateZ(-45deg);
+        translate: 200px -100px -70px;
+    }
+    91% {
+        transform:  rotateZ(180deg);
+        translate: 0px 0px -70px;
     }
     100% {
-        transform:  rotateZ(180deg);
+        @include initial
     }
 }
+
+// first
+// transform:  rotateZ(180deg);
+// second
+// transform:  rotateZ(45deg);
+// translate: 200px 0px 0px;
+// third
+// transform:  rotateZ(-45deg);
+// translate: -90px 0px 0px;
+// forth: 
+// transform:  rotateZ(-45deg);
+// translate: 200px -100px 0px;

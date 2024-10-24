@@ -10,6 +10,9 @@
 @use './animations/double_frames.scss';
 @use './animations/cube_frames.scss';
 @use './animations/triangle_first.scss';
+@use './animations/gram_frames.scss';
+
+$duration: 20s;
 
 @mixin container {
   transform-style: preserve-3d;
@@ -20,25 +23,26 @@
 .triangle-container-first {
   @include container;
   @include triangle.triangle-container;
-  animation: triangle_first_frames 10s infinite;
+  animation: triangle_first_frames $duration infinite;
 }
 
 .triangle-container-second {
   @include container;
   @include triangle.triangle-container;
-  animation: triangle_second_frames 10s infinite;
+  animation: triangle_second_frames $duration infinite;
 }
 
 .cube-container {
   // animation: girar 5s;
   @include container;
   @include cube.cube-container;
-  animation: cube_frames 10s infinite;
+  animation: cube_frames $duration infinite;
 }
 
 .paralelogram-container {
   @include container;
   @include paralelogram.paralelogram-container;
+  animation: paralelogram_frames $duration infinite;
 
   .paralelogram-part {
     display: inline-block;
@@ -51,7 +55,7 @@
   @include double.double-container;
   @include triangle.triangle-container;
   scale: 1.41;
-  animation: double_frames 10s infinite;
+  animation: double_frames $duration infinite;
 }
 
 .large-container-first {
@@ -59,7 +63,7 @@
   @include large.large-container;
   @include triangle.triangle-container;
   scale: 2;
-  animation: large_first_animation 10s infinite;
+  animation: large_first_animation $duration infinite;
 }
 
 .large-container-second {
@@ -67,17 +71,36 @@
   @include large.large-container;
   @include triangle.triangle-container;
   scale: 2;
-  animation: large_second_animation 10s infinite;
+  animation: large_second_animation $duration infinite;
 }
 
 .perspective-container {
   height: 400px;
-  border: black 1px solid;
   transform-style: preserve-3d;
   perspective: 10000px;
-  scale: 0.8;
+  scale: 0.5;
 
-  animation: girar 10s infinite;
+  // rotate: y 90deg;
+
+  animation: left-right 30s ease-in-out infinite;
+}
+
+@keyframes left-right {
+  0% {
+    transform: rotateY(-45deg) rotateX(20deg);
+  }
+  25% {
+    transform: rotateY(45deg) rotateX(20deg);
+  }
+  50% {
+    transform: rotateY(-45deg) rotateX(-20deg);
+  }
+  75% {
+    transform: rotateY(45deg) rotateX(-20deg);
+  }
+  100% {
+    transform: rotateY(-45deg) rotateX(20deg);
+  }
 }
 
 @keyframes girar {

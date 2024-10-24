@@ -7,7 +7,64 @@
     0% {
         @include initial;
     }
+    8%{
+        transform: rotateZ(90deg);
+        translate: -150px 150px 0px;
+    }
+    16% {
+        transform: rotateZ(-135deg);
+        translate: -50px 250px 0px;
+    }
+    25% {
+        transform: rotateZ(-135deg);
+        translate: -50px 250px 0px;
+    }
+    33% {
+        transform: rotateZ(-135deg);
+        translate: -50px 250px 0px;
+    }
+    41% {
+        transform: rotateZ(0deg);
+        translate: 300px 345px 0px;
+    }
+    50% {
+        transform: rotateZ(0deg);
+        translate: 300px 345px 0px;
+    }
+    58% {
+        transform: rotateZ(0deg);
+        translate: 300px 345px 0px;
+    }
+    66% {
+        transform: rotateZ(45deg);
+        translate: -15px -100px 0px;
+    }
+    75% {
+        transform: rotateZ(45deg);
+        translate: -15px -100px 0px;
+    }
+    83% {
+        transform: rotateZ(45deg);
+        translate: -15px -100px 0px;
+    }
+    91% {
+        transform: rotateZ(90deg);
+        translate: -150px 150px 0px;
+    }
     100% {
         @include initial;
     }
 }
+
+// :first
+// transform: rotateZ(90deg);
+// translate: -150px 150px 0px;
+// second
+// transform: rotateZ(-135deg);
+// translate: -50px 250px 0px;
+// third
+// transform: rotateZ(0deg);
+// translate: 300px 345px 0px;
+// forth 
+// transform: rotateZ(45deg);
+// translate: -15px -100px 0px;
