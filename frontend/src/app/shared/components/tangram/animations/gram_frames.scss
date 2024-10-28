@@ -1,6 +1,6 @@
 @mixin initial {
     transform: rotateZ(0deg);
-    translate: 0px 390px 0px;
+    translate: -160px 390px 0px;
 }
 
 @keyframes paralelogram_frames {
@@ -9,47 +9,47 @@
     }
     8% {
         transform: rotateZ(0deg);
-        translate: 0px 390px -140px;
+        translate: -160px 390px -195px;
     }
     16% {
         transform: rotateZ(225deg) rotateX(180deg);
-        translate: -560px 65px -140px;
+        translate: -443px 180px -195px;
     }
     25%{
         transform: rotateZ(225deg) rotateX(180deg);
-        translate: -560px 65px 0px;
+        translate: -443px 180px 0px;
     }
     33% {
         transform: rotateZ(225deg) rotateX(180deg);
-        translate: -560px 65px -140px;
+        translate: -443px 180px -195px;
     }
     41% {
         transform: rotateZ(-45deg);
-        translate: -260px 110px -140px;
+        translate: -375px 215px -195px;
     }
     50% {
         transform: rotateZ(-45deg);
-        translate: -260px 110px 0px;
+        translate: -375px 215px 0px;
     }
     58% {
         transform: rotateZ(-45deg);
-        translate: -260px 110px -140px;
+        translate: -375px 215px -195px;
     }
     66% {
         transform: rotateZ(90deg) rotateX(180deg);
-        translate: 280px 310px -140px;
+        translate: 280px 150px -195px;
     }
     75% {
         transform: rotateZ(90deg) rotateX(180deg);
-        translate: 280px 310px 0px;
+        translate: 280px 150px 0px;
     }
     83% {
         transform: rotateZ(90deg) rotateX(180deg);
-        translate: 280px 310px -140px;
+        translate: 280px 150px -195px;
     }
     91% {
         transform: rotateZ(0deg);
-        translate: 0px 390px -140px;
+        translate: -160px 390px -195px;
     }
     100% {
         @include initial;
