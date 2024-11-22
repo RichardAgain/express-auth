@@ -12,7 +12,7 @@ import { TangramPageComponent } from './pages/tangram-page/tangram-page.componen
 export const routes: Routes = [
   { 
     path: '', 
-    title: 'yeah idk',
+    title: 'Sonic Web Page',
     component: IndexComponent,
   },
 
