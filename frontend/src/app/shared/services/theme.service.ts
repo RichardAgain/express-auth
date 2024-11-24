@@ -35,7 +35,7 @@ export class ThemeService {
     this.text.set(sessionTheme.text || 'black')
     this.background.set(sessionTheme.background || 'white')
 
-    this.textSize.set(sessionTheme.textSize || '16px')
+    this.textSize.set(sessionTheme.textSize || '14px')
     this.subSize.set(sessionTheme.subSize || '30px')
     this.titleSize.set(sessionTheme.titleSize || '48px')
 
@@ -79,7 +79,7 @@ export class ThemeService {
         accent: '#42566a',
         background: 'white',
         text: 'black',
-        textSize: '16px',
+        textSize: '14px',
         subSize: '30px',
         titleSize: '48px',
       }
