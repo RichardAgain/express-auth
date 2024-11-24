@@ -1,6 +1,6 @@
 <app-layout>
 
-    <input type="file" (change)="onFileSelected($event)" multiple />
+    <input type="file" accept=".png, .jpg, .jpeg, .webp" (change)="onFileSelected($event)" multiple />
     <button (click)="onImagesSubmit()">Submit</button>
 
 
