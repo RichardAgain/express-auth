@@ -8,6 +8,7 @@ import { IndexComponent } from './pages/index/index.component';
 import { UserThemeComponent } from './pages/user-theme/user-theme.component';
 import DashboardComponent from './pages/business/dashboard/dashboard.component';
 import { TangramPageComponent } from './pages/tangram-page/tangram-page.component';
+import { MediaPageComponent } from './pages/media-page/media-page/media-page.component';
 
 export const routes: Routes = [
   { 
@@ -51,6 +52,12 @@ export const routes: Routes = [
     title: 'Tangram',
     canActivate: [authGuard],
     component: TangramPageComponent
+  },
+  {
+    path: 'media',
+    title: 'Media',
+    canActivate: [authGuard],
+    component: MediaPageComponent
   },
   {
     path: '**',
