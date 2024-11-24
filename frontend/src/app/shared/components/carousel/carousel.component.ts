@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ThemeService } from '../../services/theme.service';
 
 
 @Component({
@@ -6,8 +7,8 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.scss'
+  // styleUrl: './carousel.component.scss'
 })
 export class CarouselComponent {
-
+  theme = inject(ThemeService)
 }

@@ -12,6 +12,9 @@ const themeSchema = new Schema({
   titleSize: String,
 
   fontPath: { type: String },
+  subFontPath: { type: String },
+
+  carouselPaths: [String],
 
   user: {
     type: Schema.Types.ObjectId,

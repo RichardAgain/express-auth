@@ -1,3 +1,11 @@
 <app-layout>
-    HOLAAAAAAAAAAA!!!!!!!!!!!!!
+
+    <input type="file" (change)="onFileSelected($event)" multiple />
+    <button (click)="onImagesSubmit()">Submit</button>
+
+
+    @for (image of imagesSrc; track $index) {
+        <img [src]="image" alt="Uploaded Image" />
+    }
+
 </app-layout>

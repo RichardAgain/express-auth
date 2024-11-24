@@ -84,7 +84,7 @@ export class UserThemeComponent {
       console.log(res, ' saved succesfully!');
 
       this.theme.saveThemeInStorage(res);
-
+    }).add(() => {
       this.loading.isLoading.set(false)
     })
   }

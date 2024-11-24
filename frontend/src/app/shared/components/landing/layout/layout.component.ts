@@ -8,11 +8,12 @@ import { ThemeService } from '../../../services/theme.service';
 import { TitleComponent } from "../../title/title.component";
 import { FooterComponent } from "../../dahsboard/footer/footer.component";
 import { SubTitleComponent } from "../../sub-title/sub-title.component";
+import { CarouselComponent } from "../../carousel/carousel.component";
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [HeaderComponent, HeroComponent, TextComponent, TitleComponent, FooterComponent, SubTitleComponent],
+  imports: [HeaderComponent, HeroComponent, TextComponent, TitleComponent, FooterComponent, SubTitleComponent, CarouselComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })
