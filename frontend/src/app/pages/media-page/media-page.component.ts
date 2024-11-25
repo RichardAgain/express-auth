@@ -19,7 +19,7 @@ export class MediaPageComponent implements AfterViewInit {
   inputContent: string = '';
   selectedFile: File | null = null;
   fileContent: string | ArrayBuffer | null = '';
-  selectedOption: string = 'Images';
+  selectedOption: string = 'Wysiwyg';
   acceptTypes: string = 'image/*';
 
   ngAfterViewInit() {
