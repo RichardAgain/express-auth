@@ -36,7 +36,7 @@ router.patch("/carousel", upload.array('images'), async (req, res) => {
 
   console.log(theme)
 
-  return res.json({ message: theme })
+  return res.json(theme)
 })
 
 export default router

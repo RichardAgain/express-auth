@@ -2,17 +2,20 @@ import { Component, inject } from '@angular/core';
 import { LayoutComponent } from "../../../shared/components/dahsboard/layout/layout.component";
 import { HttpClient } from '@angular/common/http';
 import { LoadingService } from '../../../shared/components/loading/loading.service';
+import { ButtonPrimaryComponent } from "../../../shared/components/buttons/button-primary/button-primary.component";
+import { ThemeService } from '../../../shared/services/theme.service';
 
 @Component({
   selector: 'app-media-page',
   standalone: true,
-  imports: [LayoutComponent],
+  imports: [LayoutComponent, ButtonPrimaryComponent],
   templateUrl: './media-page.component.html',
   styleUrl: './media-page.component.scss'
 })
 export class MediaPageComponent {
   _http: HttpClient = inject(HttpClient)
   loading = inject(LoadingService)
+  theme = inject(ThemeService)
 
   images: File[] = []
   imagesSrc: string[] = []
@@ -46,6 +49,8 @@ export class MediaPageComponent {
 
     $upload.subscribe(res => {
       console.log('Images uploaded', res)
+
+      this.theme.saveThemeInStorage(res);
     }).add(() => {
       this.loading.isLoading.set(false)
     })
