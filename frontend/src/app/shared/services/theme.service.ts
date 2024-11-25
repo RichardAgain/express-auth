@@ -20,8 +20,10 @@ export class ThemeService {
   textSize = signal<string>('');
   subSize = signal<string>('');
   titleSize = signal<string>('');
-
+  
   carouselPaths = signal<string[]>([]);
+  videoPath = signal<string>('');
+  videoCaptionsPath = signal<string>('');
 
   constructor () {
     this.changeTheme()
@@ -40,7 +42,9 @@ export class ThemeService {
     this.textSize.set(sessionTheme.textSize || '14px')
     this.subSize.set(sessionTheme.subSize || '30px')
     this.titleSize.set(sessionTheme.titleSize || '48px')
-
+    
+    this.videoPath.set(sessionTheme.videoPath || '')
+    this.videoCaptionsPath.set(sessionTheme.videoCaptionsPath || '')
     this.carouselPaths.set(sessionTheme.carouselPaths || [])
 
     this.changeFont()

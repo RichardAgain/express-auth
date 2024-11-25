@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { LayoutComponent } from '../../shared/components/dahsboard/layout/layout.component';
 import Quill from 'quill';
 import { ImagesSelectComponent } from "./images-select/images-select.component";
+import { VideoSelectComponent } from "./video-select/video-select.component";
+import { CaptionsSelectComponent } from "./captions-select/captions-select.component";
 @Component({
   selector: 'app-media-page',
   standalone: true,
-  imports: [LayoutComponent, CommonModule, ImagesSelectComponent],
+  imports: [LayoutComponent, CommonModule, ImagesSelectComponent, VideoSelectComponent, CaptionsSelectComponent],
   templateUrl: './media-page.component.html',
   styleUrls: ['./media-page.component.scss'],
 })

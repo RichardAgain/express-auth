@@ -12,7 +12,10 @@ const themeSchema = new Schema({
   titleSize: String,
 
   fontPath: { type: String },
-  subFontPath: { type: String },
+  TitleFontPath: { type: String },
+
+  videoPath: { type: String },
+  videoCaptionsPath: { type: String },
 
   carouselPaths: [String],
 

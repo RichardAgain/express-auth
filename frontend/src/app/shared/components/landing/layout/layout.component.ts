@@ -9,11 +9,12 @@ import { TitleComponent } from "../../title/title.component";
 import { FooterComponent } from "../../dahsboard/footer/footer.component";
 import { SubTitleComponent } from "../../sub-title/sub-title.component";
 import { CarouselComponent } from "../../carousel/carousel.component";
+import { VideoContainerComponent } from "../../video-container/video-container.component";
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [HeaderComponent, HeroComponent, TextComponent, TitleComponent, FooterComponent, SubTitleComponent, CarouselComponent],
+  imports: [HeaderComponent, HeroComponent, TextComponent, TitleComponent, FooterComponent, SubTitleComponent, CarouselComponent, VideoContainerComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })
