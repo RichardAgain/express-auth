@@ -1,4 +1,19 @@
-<app-layout> 
+<app-layout>
+
+    <input type="file" accept=".png, .jpg, .jpeg, .webp" (change)="onFileSelected($event)" multiple />
+
+    <div class="flex">
+        @for (image of imagesSrc; track $index) {
+
+            <div class="size-1/6 p-2 m-2 bg-zinc-200 rounded-md ">
+                <img [src]="image" alt="Uploaded Image" />
+            </div>
+        }
+    </div>
+
+    <div class="my-2 flex flex-row-reverse">
+        <app-button-primary label="Subir Imagenes" (click)="onImagesSubmit()"/>
+    </div>
 
     <select (change)="onOptionChange($event)" class="mb-4 p-2 border border-gray-300 rounded-md bg-slate-700 text-white"> 
         <option value="Images">Images</option> 
@@ -147,6 +162,4 @@
     </section>
     </div>
 
-    
-    
 </app-layout>

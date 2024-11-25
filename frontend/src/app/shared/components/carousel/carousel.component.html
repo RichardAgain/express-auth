@@ -1,0 +1,35 @@
+<!-- Carousel -->
+
+<div class="w-screen">
+
+
+  <div class="overflow-hidden">
+    <div class="absolute flex w-screen justify-between p-4 z-10 mt-52 ">
+      <button class="rounded-full p-2 backdrop-blur-md transition-colors bg-black/30 hover:bg-black/60" (click)="changePosition(-1)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-white"  viewBox="0 0 24 24"><path fill="currentColor" d="M16 19L5 12l11-7z"/></svg>
+      </button>
+      <button class="rounded-full p-2 backdrop-blur-md transition-colors bg-black/30 hover:bg-black/60" (click)="changePosition(1)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M8 19V5l11 7z"/></svg>
+      </button>
+    </div>
+
+    <div class="h-[70vh] bg-zinc-800 overflow-hidden w-[100vw] relative">
+      @for (path of theme.carouselPaths(); track $index) {
+        <div 
+          class="transition-all duration-500 ease-in-out absolute w-[100vw] h-[70vh]" 
+          [style.left]="(($index - position) * 100) + 'vw'"
+          [style.background-image]="'url(http://localhost:3000/images/carousel/' + path + ')'"
+          [style.background-size]= "'cover'"
+          [style.background-position]= "'center'"
+        >
+          <!-- <img [src]="'http://localhost:3000/images/carousel/' + path" class="m-auto" > -->
+        </div>
+      }  
+    </div>
+  </div>
+
+</div>
+
+
+
+

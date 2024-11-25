@@ -21,6 +21,8 @@ export class ThemeService {
   subSize = signal<string>('');
   titleSize = signal<string>('');
 
+  carouselPaths = signal<string[]>([]);
+
   constructor () {
     this.changeTheme()
     this.changeFont()
@@ -38,6 +40,8 @@ export class ThemeService {
     this.textSize.set(sessionTheme.textSize || '14px')
     this.subSize.set(sessionTheme.subSize || '30px')
     this.titleSize.set(sessionTheme.titleSize || '48px')
+
+    this.carouselPaths.set(sessionTheme.carouselPaths || [])
 
     this.changeFont()
   }

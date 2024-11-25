@@ -13,7 +13,7 @@ import { MediaPageComponent } from './pages/media-page/media-page/media-page.com
 export const routes: Routes = [
   { 
     path: '', 
-    title: 'Sonic Page - Home',
+    title: 'Sonic Web Page',
     component: IndexComponent,
   },
 
