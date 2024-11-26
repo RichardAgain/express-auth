@@ -1,4 +1,11 @@
-import { computed, effect, inject, Injectable, OnInit, signal } from '@angular/core';
+import {
+  computed,
+  effect,
+  inject,
+  Injectable,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { SessionsService } from './session.service';
 import { HttpClient } from '@angular/common/http';
 import { StorageService } from './storage.service';
@@ -20,7 +27,7 @@ export class ThemeService {
   textSize = signal<string>('');
   subSize = signal<string>('');
   titleSize = signal<string>('');
-  
+
   carouselPaths = signal<string[]>([]);
   videoPath = signal<string>('');
   videoCaptionsPath = signal<string>('');
@@ -29,35 +36,35 @@ export class ThemeService {
 
   userManualPath = signal<string>('');
 
-  constructor () {
-    this.changeTheme()
-    this.changeFont()
+  constructor() {
+    this.changeTheme();
+    this.changeFont();
 
-    console.log(this.wysiwyg())
+    console.log(this.wysiwyg());
   }
 
   changeTheme() {
-    const sessionTheme = this.session.getSession()?.theme || ''
+    const sessionTheme = this.session.getSession()?.theme || '';
 
-    this.primary.set(sessionTheme.primary || '#2563eb')
-    this.secondary.set(sessionTheme.secondary || '#1f2937')
-    this.accent.set(sessionTheme.accent || '#42566a')
-    this.text.set(sessionTheme.text || 'black')
-    this.background.set(sessionTheme.background || 'white')
+    this.primary.set(sessionTheme.primary || '#2563eb');
+    this.secondary.set(sessionTheme.secondary || '#1f2937');
+    this.accent.set(sessionTheme.accent || '#42566a');
+    this.text.set(sessionTheme.text || 'black');
+    this.background.set(sessionTheme.background || 'white');
 
-    this.textSize.set(sessionTheme.textSize || '14px')
-    this.subSize.set(sessionTheme.subSize || '30px')
-    this.titleSize.set(sessionTheme.titleSize || '48px')
-    
-    this.videoPath.set(sessionTheme.videoPath || '')
-    this.videoCaptionsPath.set(sessionTheme.videoCaptionsPath || '')
+    this.textSize.set(sessionTheme.textSize || '14px');
+    this.subSize.set(sessionTheme.subSize || '30px');
+    this.titleSize.set(sessionTheme.titleSize || '48px');
 
-    this.userManualPath.set(sessionTheme.userManualPath || '')
-    this.carouselPaths.set(sessionTheme.carouselPaths || [])
-    
-    this.wysiwyg.set(sessionTheme.wysiwyg || '')
+    this.videoPath.set(sessionTheme.videoPath || '');
+    this.videoCaptionsPath.set(sessionTheme.videoCaptionsPath || '');
 
-    this.changeFont()
+    this.userManualPath.set(sessionTheme.userManualPath || '');
+    this.carouselPaths.set(sessionTheme.carouselPaths || []);
+
+    this.wysiwyg.set(sessionTheme.wysiwyg || '');
+
+    this.changeFont();
   }
 
   changeFont() {
@@ -70,8 +77,8 @@ export class ThemeService {
       })`
     );
 
-    
-    font.load()
+    font
+      .load()
       .then((loadedFont) => {
         (document.fonts as any).add(loadedFont);
         console.log(`Font ${loadedFont.family} loaded successfully`);
@@ -79,7 +86,23 @@ export class ThemeService {
       .catch((error) => {
         console.error('Failed to load font:', error);
       });
-    
+
+    const titleFont = new FontFace(
+      'customTitleFont',
+      `url(http://localhost:3000/fonts/${
+        this.session.getSession()?.theme.titleFontPath
+      })`
+    );
+
+    titleFont
+      .load()
+      .then((loadedFont) => {
+        (document.fonts as any).add(loadedFont);
+        console.log(`Font ${loadedFont.family} loaded successfully`);
+      })
+      .catch((error) => {
+        console.error('Failed to load font:', error);
+      });
   }
 
   saveTheme(formData: any) {
@@ -87,35 +110,41 @@ export class ThemeService {
   }
 
   toDeafults() {
-    const storage = this.storage.getValue('session')
+    const storage = this.storage.getValue('session');
 
-    this.storage.saveValue('session', JSON.stringify({
-      ...storage,
-      theme: {
-        primary: '#2563eb',
-        secondary: '#1f2937',
-        accent: '#42566a',
-        background: 'white',
-        text: 'black',
-        textSize: '14px',
-        subSize: '30px',
-        titleSize: '48px',
-      }
-    }))
+    this.storage.saveValue(
+      'session',
+      JSON.stringify({
+        ...storage,
+        theme: {
+          primary: '#2563eb',
+          secondary: '#1f2937',
+          accent: '#42566a',
+          background: 'white',
+          text: 'black',
+          textSize: '14px',
+          subSize: '30px',
+          titleSize: '48px',
+        },
+      })
+    );
 
-    this.changeTheme()
+    this.changeTheme();
   }
 
   saveThemeInStorage(theme: any) {
-    const storage = this.storage.getValue('session')
+    const storage = this.storage.getValue('session');
 
-    console.log(theme)
+    console.log(theme);
 
-    this.storage.saveValue('session', JSON.stringify({
-      ...storage,
-      theme
-    }))
+    this.storage.saveValue(
+      'session',
+      JSON.stringify({
+        ...storage,
+        theme,
+      })
+    );
 
-    this.changeTheme()
+    this.changeTheme();
   }
 }

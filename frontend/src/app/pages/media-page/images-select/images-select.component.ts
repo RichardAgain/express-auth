@@ -19,8 +19,6 @@ export class ImagesSelectComponent {
   images: File[] = []
   imagesSrc: string[] = []
 
-  
-
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
@@ -43,8 +41,6 @@ export class ImagesSelectComponent {
     })
 
    const $upload = this._http.patch('api/media/carousel', formData)
-
-   console.log(formData)
 
     $upload.subscribe(res => {
       console.log('Images uploaded', res)

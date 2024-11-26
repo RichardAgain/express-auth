@@ -5,18 +5,7 @@ import multer from "multer"
 
 const router = Router()
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/fonts")
-  },
-  filename: function (req, file, cb) {
-    console.log(req, file)
 
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9)
-    cb(null, file.fieldname + "-" + uniqueSuffix)
-  },
-})
-const upload = multer({ storage })
 
 router.get("/", async (req, res) => {
   const user = await User.findById(req.user_id)
@@ -47,18 +36,37 @@ router.get("/theme", async (req, res) => {
   return res.json({ theme })
 })
 
-router.patch("/theme", upload.single("font"), async (req, res) => {
+// multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/fonts")
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9)
+    cb(null, file.fieldname + "-" + uniqueSuffix)
+  },
+})
+const upload = multer({ storage })
+
+// theme
+router.patch("/theme", upload.array("fonts"), async (req, res) => {
   let toUpdate = req.body
 
-  console.log(toUpdate, 'toUpdate')
+  const fontFile = req.files.find(file => file.originalname === 'paragraphs');
+  const titleFontFile = req.files.find(file => file.originalname === 'titles');
 
-  if (req.file) {
+  if (fontFile) {
     toUpdate = {
       ...toUpdate,
-      fontPath: req.file.filename,
+      fontPath: fontFile.filename,
     }
-  } else {
-    console.log('no file')
+  }
+
+  if (titleFontFile) {
+    toUpdate = {
+      ...toUpdate,
+      titleFontPath: titleFontFile.filename,
+    }
   }
 
   const theme = await Theme.findOneAndUpdate(
@@ -67,7 +75,7 @@ router.patch("/theme", upload.single("font"), async (req, res) => {
     { new: true }
   )
 
-  console.log(toUpdate, 'theme')
+  // console.log(toUpdate, 'theme')
 
   return res.json(theme)
 })

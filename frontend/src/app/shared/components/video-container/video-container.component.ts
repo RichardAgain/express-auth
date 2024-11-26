@@ -12,7 +12,6 @@ export class VideoContainerComponent implements OnInit {
   theme = inject(ThemeService)
 
   ngOnInit(): void {
-    const subtitles = document.getElementById("subtitles");
 
   }
 }

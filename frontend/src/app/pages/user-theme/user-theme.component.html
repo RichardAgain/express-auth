@@ -102,14 +102,26 @@
         </div>
       </div>
 
-      <div>
-        <h3>Upload Font</h3>
-        <input
-          type="file"
-          accept=".woff,.ttf"
-          (change)="onFileSelected($event)"
-        />
-      </div>
+      <div class="flex flex-col gap-4 mt-4 border border-zinc-50 rounded-md p-4">
+        <div>
+          <h3>Upload Font</h3>
+          <input
+            type="file"
+            accept=".woff,.ttf"
+            (change)="onFontSelected($event, 'customFont')"
+          />
+        </div>
+
+        <div>
+          <h3>Upload Title Font</h3>
+          <input
+            type="file"
+            accept=".woff,.ttf"
+            (change)="onFontSelected($event, 'customTitleFont')"
+          />
+        </div>
+    </div>
+
 
         <!-- <app-button-primary (click)="" label="Remove Font" class="m-4 align-middle"/> -->
     </div>
