@@ -12,7 +12,6 @@
         <div class="flex items-center justify-center">
             <label>
                 <input type="file" hidden #fileInput (change)="onFileSelected($event)" accept=".pdf"/> 
-                    <img [src]="fileContent" alt="Selected file preview" class="mx-auto mt-4 rounded-lg border border-gray-300"/>
             <div class="flex w-28 h-9 px-2 flex-col bg-blue-600 rounded-full shadow text-white text-xs font-semibold leading-4 items-center justify-center cursor-pointer focus:outline-none">choose file</div>
             </label>
         </div>

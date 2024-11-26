@@ -29,5 +29,5 @@
 </div>
 
 <div class="my-2 flex flex-row-reverse">
-    <app-button-primary label="Subir Imagenes" (click)="onImagesSubmit()"/>
+    <app-button-primary label="Subir Imagenes" [disabled]="images.length < 3" (click)="onImagesSubmit()"/>
 </div>
