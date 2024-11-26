@@ -309,7 +309,10 @@
         <div class="pt-2">
             <div
                 class="flex pb-5 px-3 m-auto pt-5 border-t border-gray-500 text-gray-400 flex-col md:flex-row max-w-6xl">
-                <div class="mt-2">Brought to you by Spoty and Richard © Copyright 2024-year. All Rights Reserved.</div>
+                <div class="mt-2">
+                    <div [innerHTML]="theme.wysiwyg()"></div>
+
+                </div>
 
                 <!-- Required Unicons (if you want) -->
                 <div class="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">

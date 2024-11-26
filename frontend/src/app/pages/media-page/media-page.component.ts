@@ -1,14 +1,18 @@
-import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent } from '../../shared/components/dahsboard/layout/layout.component';
 import Quill from 'quill';
 import { ImagesSelectComponent } from "./images-select/images-select.component";
 import { VideoSelectComponent } from "./video-select/video-select.component";
 import { CaptionsSelectComponent } from "./captions-select/captions-select.component";
+import { HttpClient } from '@angular/common/http';
+import { LoadingService } from '../../shared/components/loading/loading.service';
+import { ThemeService } from '../../shared/services/theme.service';
+import { DocumentSelectComponent } from "./document-select/document-select.component";
 @Component({
   selector: 'app-media-page',
   standalone: true,
-  imports: [LayoutComponent, CommonModule, ImagesSelectComponent, VideoSelectComponent, CaptionsSelectComponent],
+  imports: [LayoutComponent, CommonModule, ImagesSelectComponent, VideoSelectComponent, CaptionsSelectComponent, DocumentSelectComponent],
   templateUrl: './media-page.component.html',
   styleUrls: ['./media-page.component.scss'],
 })
@@ -23,6 +27,10 @@ export class MediaPageComponent implements AfterViewInit {
   fileContent: string | ArrayBuffer | null = '';
   selectedOption: string = 'Images';
   acceptTypes: string = 'image/*';
+
+  _http = inject(HttpClient);
+  _loading = inject(LoadingService);
+  _theme = inject(ThemeService);
 
   ngAfterViewInit() {
     if (this.selectedOption === 'Wysiwyg') {
@@ -52,8 +60,18 @@ export class MediaPageComponent implements AfterViewInit {
   }
 
   save() {
+    this._loading.isLoading.set(true)
     this.content = this.quillInstance.root.innerHTML;
-    console.log(this.content);
+
+    const $update = this._http.patch('api/media/wysiwyg', { content: this.content })
+
+    $update.subscribe(res => {
+      console.log('Content saved', res)
+
+      this._theme.saveThemeInStorage(res);
+    }).add(() => {
+      this._loading.isLoading.set(false)
+    })
   }
 
   discard() {

@@ -25,9 +25,15 @@ export class ThemeService {
   videoPath = signal<string>('');
   videoCaptionsPath = signal<string>('');
 
+  wysiwyg = signal<string>('');
+
+  userManualPath = signal<string>('');
+
   constructor () {
     this.changeTheme()
     this.changeFont()
+
+    console.log(this.wysiwyg())
   }
 
   changeTheme() {
@@ -45,7 +51,11 @@ export class ThemeService {
     
     this.videoPath.set(sessionTheme.videoPath || '')
     this.videoCaptionsPath.set(sessionTheme.videoCaptionsPath || '')
+
+    this.userManualPath.set(sessionTheme.userManualPath || '')
     this.carouselPaths.set(sessionTheme.carouselPaths || [])
+    
+    this.wysiwyg.set(sessionTheme.wysiwyg || '')
 
     this.changeFont()
   }

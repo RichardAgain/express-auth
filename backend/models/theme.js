@@ -11,11 +11,15 @@ const themeSchema = new Schema({
   subSize: String,
   titleSize: String,
 
+  wysiwyg: String,
+
   fontPath: { type: String },
-  TitleFontPath: { type: String },
+  titleFontPath: { type: String },
 
   videoPath: { type: String },
   videoCaptionsPath: { type: String },
+
+  userManualPath: { type: String },
 
   carouselPaths: [String],
 

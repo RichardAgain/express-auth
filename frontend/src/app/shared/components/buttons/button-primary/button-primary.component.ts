@@ -12,4 +12,5 @@ export class ButtonPrimaryComponent {
   theme = inject(ThemeService)
 
   @Input() label = 'Button'
+  @Input() disabled = false
 }
