@@ -1,12 +1,13 @@
 <div class="mt-12">
   <video id="video" controls preload="metadata" class="m-auto shadow-xl" [style.border]="'5px solid ' + theme.primary()">
     <source [src]="'http://localhost:3000/videos/' + theme.videoPath()" type="video/mp4" />
+    <!-- <source src="./video.mp4" type="video/mp4" /> -->
     <!-- <source src="video/sintel-short.webm" type="video/webm" /> -->
     <track
       label="English"
       kind="captions"
       srclang="en"
-      src="/src/app/shared/components/video-container/captions.vtt"
+      [src]="'localhost:3000/captions/' + theme.videoCaptionsPath() + '.vtt'"
       default
     />
   </video>

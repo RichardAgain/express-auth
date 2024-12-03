@@ -14,6 +14,7 @@ import { ThemeService } from '../../shared/services/theme.service';
 import { LayoutComponent } from '../../shared/components/dahsboard/layout/layout.component';
 import { ButtonOutlineComponent } from "../../shared/components/buttons/button-outline/button-outline.component";
 import { ButtonPrimaryComponent } from "../../shared/components/buttons/button-primary/button-primary.component";
+import { LoadingService } from '../../shared/components/loading/loading.service';
 
 interface KLMEvent {
   type: string;
@@ -47,6 +48,8 @@ export class UserFormComponent {
   totalTime: number = 0;
   cdr = inject(ChangeDetectorRef);
 
+  _loading = inject(LoadingService)
+
   constructor () {
     this.getUser()
     this.theme.changeTheme()
@@ -67,6 +70,8 @@ export class UserFormComponent {
   }
 
   submitForm() {
+    this._loading.isLoading.set(true)
+
     const formObject = {
       ...this.profileForm.value,
       dob: {
@@ -77,7 +82,9 @@ export class UserFormComponent {
 
     this.userService.updateUser(this.profileForm.value).subscribe((res) => {
       console.log(res, 'LESGOO!!!');
-    });
+    }).add(() => {
+      this._loading.isLoading.set(false)
+    })
   }
 
   getEvents(event: KLMEvent) {

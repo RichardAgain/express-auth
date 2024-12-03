@@ -77,6 +77,11 @@
             <label for="dob">Date of birth </label>
             <input id="dob" type="type" formControlName="dob" appInputEvents />
           </div>
+
+          <div class="formInput">
+            <label for="dob">Nationality </label>
+            <input id="dob" type="text" value="VE" appInputEvents />
+          </div>
         </div>
       </div>
 
@@ -141,6 +146,16 @@
                 id="country"
                 type="text"
                 formControlName="country"
+                appInputEvents
+              />
+            </div>
+
+            <div class="formInput">
+              <label for="country">Timezone</label>
+              <input
+                value="00:00"
+                id="country"
+                type="text"
                 appInputEvents
               />
             </div>
