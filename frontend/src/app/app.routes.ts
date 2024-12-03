@@ -9,6 +9,7 @@ import { UserThemeComponent } from './pages/user-theme/user-theme.component';
 import DashboardComponent from './pages/business/dashboard/dashboard.component';
 import { TangramPageComponent } from './pages/tangram-page/tangram-page.component';
 import { MediaPageComponent } from './pages/media-page/media-page.component';
+import { TermsPageComponent } from './pages/terms-page/terms-page.component';
 
 export const routes: Routes = [
   { 
@@ -58,6 +59,12 @@ export const routes: Routes = [
     title: 'Media',
     canActivate: [authGuard],
     component: MediaPageComponent
+  },
+  {
+    path: 'terms',
+    title: 'Terms & Conditions',
+    canActivate: [authGuard],
+    component: TermsPageComponent
   },
   {
     path: '**',
