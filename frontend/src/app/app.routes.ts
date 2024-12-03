@@ -10,6 +10,7 @@ import DashboardComponent from './pages/business/dashboard/dashboard.component';
 import { TangramPageComponent } from './pages/tangram-page/tangram-page.component';
 import { MediaPageComponent } from './pages/media-page/media-page.component';
 import { TermsPageComponent } from './pages/terms-page/terms-page.component';
+import { UserManualPageComponent } from './pages/user-manual-page/user-manual-page.component';
 
 export const routes: Routes = [
   { 
@@ -65,6 +66,12 @@ export const routes: Routes = [
     title: 'Terms & Conditions',
     canActivate: [authGuard],
     component: TermsPageComponent
+  },
+  {
+    path: 'user-manual',
+    title: 'User Manual',
+    canActivate: [authGuard],
+    component: UserManualPageComponent
   },
   {
     path: '**',

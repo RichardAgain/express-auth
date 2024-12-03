@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
       cb(null, "public/documents")
     },
     filename: function (req, file, cb) {
-      cb(null, file.originalname.split(" ").join("_"))
+      cb(null, 'user-manual.pdf')
     },
   })
 const upload = multer({ storage })
